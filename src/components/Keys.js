@@ -2,7 +2,11 @@ import styled, { css } from 'styled-components'
 import colors from '../ColorPalette'
 
 const {
-  DARK_GREY
+  DARK_GREY,
+  PALE_PINK,
+  PALEST_PINK,
+  MAROON,
+  DARK_MAROON
 } = colors
 
 const keyboardHeight = 200
@@ -28,6 +32,7 @@ const genericKey = css`
   justify-content: flex-end;
   border-top: 1px solid ${DARK_GREY};
   border-radius: 0 0 5px 5px;
+  user-select: none;
 `
 
 const blackKey = whiteKeysToLeft => styled.div`
@@ -37,6 +42,14 @@ const blackKey = whiteKeysToLeft => styled.div`
   left: ${props => (whiteKeyWidth * props.octave * 7) + (whiteKeyWidth * whiteKeysToLeft) - (blackKeyWidth / 2)}px;
   background-color: black;
   color: white;
+
+  &:hover {
+    background-color: ${MAROON};
+  }
+
+  &:active {
+    background-color: ${DARK_MAROON};
+  }
 `
 
 const whiteKey = (whiteKeysToLeft, isLast) => styled.div`
@@ -48,6 +61,14 @@ const whiteKey = (whiteKeysToLeft, isLast) => styled.div`
   border-bottom: 1px solid ${DARK_GREY};
   border-right: ${_ => isLast ? `1px solid ${DARK_GREY}`: ''};
   background-color: white;
+
+  &:hover {
+    background-color: ${PALEST_PINK};
+  }
+
+  &:active {
+    background-color: ${PALE_PINK};
+  }
 `
 
 export const CKey = whiteKey(0)
