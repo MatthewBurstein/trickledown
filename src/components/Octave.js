@@ -16,22 +16,22 @@ import {
   OctaveSpacer
 } from './Keys'
 
-export default ({ number }) => {
+export default ({ number, playNote }) => {
   return(
     <OctaveSpacer>
       <Octave>
-        <CKey octave={number}>C</CKey>
-        <CSharpKey octave={number}>C#</CSharpKey>
-        <DKey octave={number}>D</DKey>
-        <DSharpKey octave={number}>D#</DSharpKey>
-        <EKey octave={number}>E</EKey>
-        <FKey octave={number}>F</FKey>
-        <FSharpKey octave={number}>F#</FSharpKey>
-        <GKey octave={number}>G</GKey>
-        <GSharpKey octave={number}>G#</GSharpKey>
-        <AKey octave={number}>A</AKey>
-        <ASharpKey octave={number}>A#</ASharpKey>
-        <BKey octave={number}>B</BKey>
+        <CKey onClick={() => playNote('C', number)} octave={number}>C</CKey>
+        <DKey onClick={() => playNote('D', number)} octave={number}>D</DKey>
+        <EKey onClick={() => playNote('E', number)} octave={number}>E</EKey>
+        <FKey onClick={() => playNote('F', number)} octave={number}>F</FKey>
+        <GKey onClick={() => playNote('G', number)} octave={number}>G</GKey>
+        <AKey onClick={() => playNote('A', number)} octave={number}>A</AKey>
+        <BKey onClick={() => playNote('B', number)} octave={number}>B</BKey>
+        <CSharpKey onClick={() => playNote('C#', number)} octave={number}>C#</CSharpKey>
+        <DSharpKey onClick={() => playNote('D#', number)} octave={number}>D#</DSharpKey>
+        <FSharpKey onClick={() => playNote('F#', number)} octave={number}>F#</FSharpKey>
+        <GSharpKey onClick={() => playNote('G#', number)} octave={number}>G#</GSharpKey>
+        <ASharpKey onClick={() => playNote('A#', number)} octave={number}>A#</ASharpKey>
       </Octave>
     </OctaveSpacer>
   )
