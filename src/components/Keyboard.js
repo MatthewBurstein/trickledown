@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import AudioEngine from '../synthesizer/AudioEngine'
 import Octave from './Octave'
 import { HangingCKey } from './Keys'
 
 
 export default () => {
+  const audioEngine = useRef(new AudioEngine())
+
   const playNote = (key, octave) => {
-    console.log('key: ', key)
-    console.log('octave: ', octave)
+    const realOctave = octave + 4
+    audioEngine.current.play(key + realOctave)
   }
 
   return (
