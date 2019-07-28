@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import AudioEngine from '../synthesizer/AudioEngine'
 import Octave from './Octave'
-import { HangingCKey } from './Keys'
+import { EntireKeyboard } from './Keys'
 
 
 export default () => {
@@ -13,10 +13,9 @@ export default () => {
   }
 
   return (
-    <div>
+    <EntireKeyboard octaveNumber={2}>
       <Octave playNote={playNote} number={0}/>
-      <Octave playNote={playNote} number={1}/>
-      <HangingCKey octave={1}>C</HangingCKey>
-    </div>
+      <Octave playNote={playNote} number={1} isLast={true}/>
+    </EntireKeyboard>
   )
 }

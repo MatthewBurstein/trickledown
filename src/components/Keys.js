@@ -1,22 +1,33 @@
 import styled, { css } from 'styled-components'
+import colors from '../ColorPalette'
 
-export const OctaveSpacer = styled.div`
-  position: static;
+const {
+  DARK_GREY
+} = colors
+
+const keyboardHeight = 200
+const whiteKeyWidth = 40
+const blackKeyWidth = 30
+
+export const EntireKeyboard = styled.div`
+  display: flex;
+  margin: auto;
+  width: ${props => props.octaveNumber * 7 * whiteKeyWidth + whiteKeyWidth}px;
 `
 
 export const Octave = styled.div`
   display: flex;
   position: relative;
+  height: ${keyboardHeight}px;
 `
-
-const whiteKeyWidth = 40
-const blackKeyWidth = 30
 
 const genericKey = css`
   position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  border-top: 1px solid ${DARK_GREY};
+  border-radius: 0 0 5px 5px;
 `
 
 const blackKey = whiteKeysToLeft => styled.div`
@@ -33,9 +44,10 @@ const whiteKey = (whiteKeysToLeft, isLast) => styled.div`
   height: 200px;
   width: ${whiteKeyWidth}px;
   left: ${props => (whiteKeyWidth * props.octave * 7) + (whiteKeysToLeft * whiteKeyWidth)}px;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
-  border-right: ${_ => isLast ? '1px solid black': ''};
+  border-left: 1px solid ${DARK_GREY};
+  border-bottom: 1px solid ${DARK_GREY};
+  border-right: ${_ => isLast ? `1px solid ${DARK_GREY}`: ''};
+  background-color: white;
 `
 
 export const CKey = whiteKey(0)
