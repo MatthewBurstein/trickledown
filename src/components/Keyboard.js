@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import AudioEngine from '../synthesizer/AudioEngine'
 import Octave from './Octave'
 import { EntireKeyboard } from './Keys'
+import RotaryKnob from './RotaryKnob'
 
 
 export default () => {
@@ -13,9 +14,12 @@ export default () => {
   }
 
   return (
-    <EntireKeyboard octaveNumber={2}>
-      <Octave playNote={playNote} number={0}/>
-      <Octave playNote={playNote} number={1} isLast={true}/>
-    </EntireKeyboard>
+    <div>
+      <EntireKeyboard octaveNumber={2}>
+        <Octave playNote={playNote} number={0}/>
+        <Octave playNote={playNote} number={1} isLast={true}/>
+      </EntireKeyboard>
+      <RotaryKnob />
+    </div>
   )
 }
