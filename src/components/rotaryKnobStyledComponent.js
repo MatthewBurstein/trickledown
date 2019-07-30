@@ -2,7 +2,13 @@ import styled from 'styled-components'
 
 import colors from '../ColorPalette'
 
-export const KnobContainer = styled.div``
+export const KnobContainer = styled.div.attrs(props => ({
+  style: {
+    transform: `rotate(${props.rotation}deg)`
+  }
+}))`
+  display: inline-block;
+`
 
 export const KnobBody = styled.div`
   background-color: black;
