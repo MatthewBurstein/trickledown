@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import colors from '../ColorPalette'
+import styled from "styled-components"
+import colors from "../ColorPalette"
 
 export const AppContainer = styled.div`
   text-align: center;

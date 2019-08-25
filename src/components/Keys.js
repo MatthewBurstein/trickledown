@@ -1,13 +1,7 @@
-import styled, { css } from 'styled-components'
-import colors from '../ColorPalette'
+import styled, { css } from "styled-components"
+import colors from "../ColorPalette"
 
-const {
-  DARK_GREY,
-  PALE_PINK,
-  PALEST_PINK,
-  MAROON,
-  DARK_MAROON
-} = colors
+const { DARK_GREY, PALE_PINK, PALEST_PINK, MAROON, DARK_MAROON } = colors
 
 const keyboardHeight = 200
 const whiteKeyWidth = 40
@@ -39,7 +33,10 @@ const blackKey = whiteKeysToLeft => styled.div`
   ${genericKey}
   height: 120px;
   width: ${blackKeyWidth}px;
-  left: ${props => (whiteKeyWidth * props.octave * 7) + (whiteKeyWidth * whiteKeysToLeft) - (blackKeyWidth / 2)}px;
+  left: ${props =>
+    whiteKeyWidth * props.octave * 7 +
+    whiteKeyWidth * whiteKeysToLeft -
+    blackKeyWidth / 2}px;
   background-color: black;
   color: white;
 
@@ -56,10 +53,11 @@ const whiteKey = (whiteKeysToLeft, isLast) => styled.div`
   ${genericKey}
   height: 200px;
   width: ${whiteKeyWidth}px;
-  left: ${props => (whiteKeyWidth * props.octave * 7) + (whiteKeysToLeft * whiteKeyWidth)}px;
+  left: ${props =>
+    whiteKeyWidth * props.octave * 7 + whiteKeysToLeft * whiteKeyWidth}px;
   border-left: 1px solid ${DARK_GREY};
   border-bottom: 1px solid ${DARK_GREY};
-  border-right: ${_ => isLast ? `1px solid ${DARK_GREY}`: ''};
+  border-right: ${_ => (isLast ? `1px solid ${DARK_GREY}` : "")};
   background-color: white;
 
   &:hover {

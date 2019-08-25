@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
-import colors from '../ColorPalette'
+import colors from "../ColorPalette"
 
 export const KnobContainer = styled.div.attrs(props => ({
   style: {
@@ -12,8 +12,8 @@ export const KnobContainer = styled.div.attrs(props => ({
 
 export const KnobBody = styled.div`
   background-color: black;
-  height:30px;
-  width:30px;
+  height: 30px;
+  width: 30px;
   border-radius: 15px;
   display: flex;
   justify-content: center;

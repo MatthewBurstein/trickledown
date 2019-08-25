@@ -1,12 +1,9 @@
-import React from 'react'
-import {
-  AppContainer,
-  KeyboardContainer
-} from './AppLayoutComponents'
-import Keyboard from './Keyboard'
+import React from "react"
+import { AppContainer, KeyboardContainer } from "./AppLayoutComponents"
+import Keyboard from "./Keyboard"
 
 export default () => {
-  return(
+  return (
     <AppContainer>
       <KeyboardContainer>
         <Keyboard />
@@ -14,4 +11,3 @@ export default () => {
     </AppContainer>
   )
 }
-

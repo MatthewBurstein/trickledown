@@ -1,7 +1,7 @@
-import Tone from 'tone'
+import Tone from "tone"
 
 class AudioEngine {
-  constructor () {
+  constructor() {
     this.synth = new Tone.Synth().toMaster()
   }
 
