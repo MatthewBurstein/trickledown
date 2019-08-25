@@ -2,7 +2,7 @@ import Tone from "tone"
 
 class AudioEngine {
   constructor() {
-    this.synth = new Tone.Synth().toMaster()
+    this.synth = new Tone.PolySynth(4, Tone.Synth).toMaster()
   }
 
   play(note, octave) {
