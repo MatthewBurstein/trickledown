@@ -1,13 +1,13 @@
 import React from "react"
-import { AppContainer, KeyboardContainer } from "./AppLayoutComponents"
-import Keyboard from "./Keyboard"
+import { AppContainer, SynthContainer } from "./AppLayoutComponents"
+import Synth from "./Synth"
 
 export default () => {
   return (
     <AppContainer>
-      <KeyboardContainer>
-        <Keyboard />
-      </KeyboardContainer>
+      <SynthContainer>
+        <Synth />
+      </SynthContainer>
     </AppContainer>
   )
 }
