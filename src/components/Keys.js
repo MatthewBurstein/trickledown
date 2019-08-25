@@ -13,7 +13,7 @@ const keyboardHeight = 200
 const whiteKeyWidth = 40
 const blackKeyWidth = 30
 
-export const EntireKeyboard = styled.div`
+export const Keyboard = styled.div`
   display: flex;
   margin: auto;
   width: ${props => props.octaveNumber * 7 * whiteKeyWidth + whiteKeyWidth}px;
