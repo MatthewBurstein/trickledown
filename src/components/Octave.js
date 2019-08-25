@@ -16,53 +16,53 @@ import {
   Octave
 } from "./Keys"
 
+const Keys = {
+  C: CKey,
+  "C#": CSharpKey,
+  D: DKey,
+  "D#": DSharpKey,
+  E: EKey,
+  F: FKey,
+  "F#": FSharpKey,
+  G: GKey,
+  "G#": GSharpKey,
+  A: AKey,
+  "A#": ASharpKey,
+  B: BKey,
+  Hanging: HangingCKey
+}
+
 export default ({ number, playNote, isLast }) => {
-  const renderHangingC = () => {
+  const renderKey = (note, octave = number, isHanging = false) => {
+    const Key = isHanging ? HangingCKey : Keys[note]
     return (
-      <HangingCKey octave={1} onMouseDown={() => playNote("C", number + 1)}>
-        C
-      </HangingCKey>
+      <Key
+        onMouseDown={() => playNote(note, octave)}
+        octave={isHanging ? 1 : octave}
+      >
+        {note}
+      </Key>
     )
+  }
+
+  const renderHangingC = () => {
+    return renderKey("C", number + 1, true)
   }
 
   return (
     <Octave>
-      <CKey onMouseDown={() => playNote("C", number)} octave={number}>
-        C
-      </CKey>
-      <DKey onMouseDown={() => playNote("D", number)} octave={number}>
-        D
-      </DKey>
-      <EKey onMouseDown={() => playNote("E", number)} octave={number}>
-        E
-      </EKey>
-      <FKey onMouseDown={() => playNote("F", number)} octave={number}>
-        F
-      </FKey>
-      <GKey onMouseDown={() => playNote("G", number)} octave={number}>
-        G
-      </GKey>
-      <AKey onMouseDown={() => playNote("A", number)} octave={number}>
-        A
-      </AKey>
-      <BKey onMouseDown={() => playNote("B", number)} octave={number}>
-        B
-      </BKey>
-      <CSharpKey onMouseDown={() => playNote("C#", number)} octave={number}>
-        C#
-      </CSharpKey>
-      <DSharpKey onMouseDown={() => playNote("D#", number)} octave={number}>
-        D#
-      </DSharpKey>
-      <FSharpKey onMouseDown={() => playNote("F#", number)} octave={number}>
-        F#
-      </FSharpKey>
-      <GSharpKey onMouseDown={() => playNote("G#", number)} octave={number}>
-        G#
-      </GSharpKey>
-      <ASharpKey onMouseDown={() => playNote("A#", number)} octave={number}>
-        A#
-      </ASharpKey>
+      {renderKey("C")}
+      {renderKey("D")}
+      {renderKey("E")}
+      {renderKey("F")}
+      {renderKey("G")}
+      {renderKey("A")}
+      {renderKey("B")}
+      {renderKey("C#")}
+      {renderKey("D#")}
+      {renderKey("F#")}
+      {renderKey("G#")}
+      {renderKey("A#")}
       {isLast && renderHangingC()}
     </Octave>
   )
