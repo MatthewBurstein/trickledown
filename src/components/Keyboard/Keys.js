@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import colors from "../ColorPalette"
+import colors from "../../ColorPalette"
 
 const { DARK_GREY, PALE_PINK, PALEST_PINK, MAROON, DARK_MAROON } = colors
 

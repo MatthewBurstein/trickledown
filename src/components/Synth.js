@@ -1,10 +1,10 @@
 import React, { useRef } from "react"
 import AudioEngine from "../synthesizer/AudioEngine"
-import Octave from "./Octave"
-import { Keyboard } from "./Keys"
+import Octave from "./Keyboard/Octave"
+import { Keyboard } from "./Keyboard/Keys"
 import LeftControls from "./LeftControls"
 import { EntireSynth, Controls } from "./SynthLayout"
-import RotaryKnob from "./RotaryKnob"
+import RotaryKnob from "./RotaryControl/RotaryKnob"
 
 export default () => {
   const audioEngine = useRef(new AudioEngine())
