@@ -1,7 +1,6 @@
 import React from "react"
 import { AppContainer, SynthContainer } from "./AppLayoutComponents"
 import Synth from "./Synth"
-import LinearControl from "./LinearControl/LinearControl"
 
 export default () => {
   return (
@@ -9,7 +8,6 @@ export default () => {
       <SynthContainer>
         <Synth />
       </SynthContainer>
-      <LinearControl />
     </AppContainer>
   )
 }

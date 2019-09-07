@@ -3,11 +3,13 @@ import {
   Channel,
   Slider,
   ControlContainer,
+  Label,
+  SliderContainer,
   controlHeight,
   sliderHeight
 } from "./linearControlStyledComponents"
 
-export default () => {
+export default ({ label }) => {
   const [position, setPosition] = useState(sliderHeight)
 
   const handelSlide = clickEvent => {
@@ -32,9 +34,12 @@ export default () => {
   }
 
   return (
-    <ControlContainer>
-      <Channel />
-      <Slider onMouseDown={e => handelSlide(e)} position={position} />
+    <ControlContainer id="contolContainer">
+      <SliderContainer>
+        <Channel />
+        <Slider onMouseDown={e => handelSlide(e)} position={position} />
+      </SliderContainer>
+      <Label>{label}</Label>
     </ControlContainer>
   )
 }
