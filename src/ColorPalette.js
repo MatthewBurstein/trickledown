@@ -1,5 +1,6 @@
 export default {
   DARK_GREY: "#333",
+  LIGHT_GREY: "#a6a6a6",
   TURQOISE: "#48cfb6",
   PURPLE: "#6311ba",
   MAROON: "#381a21",
