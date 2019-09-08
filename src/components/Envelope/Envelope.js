@@ -2,10 +2,10 @@ import React from "react"
 import LinerControl from "../LinearControl/LinearControl"
 import { EnvelopeContainer } from "./envelopeStyledComponents"
 
-export default () => {
+export default ({ setAmpAttack }) => {
   return (
     <EnvelopeContainer>
-      <LinerControl label="A" />
+      <LinerControl effectValue={setAmpAttack} label="A" />
       <LinerControl label="D" />
       <LinerControl label="S" />
       <LinerControl label="R" />

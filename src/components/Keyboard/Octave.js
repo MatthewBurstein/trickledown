@@ -32,12 +32,15 @@ const Keys = {
   Hanging: HangingCKey
 }
 
-export default ({ number, playNote, isLast }) => {
+export default ({ number, playNote, stopNote, isLast }) => {
   const renderKey = (note, octave = number, isHanging = false) => {
     const Key = isHanging ? HangingCKey : Keys[note]
+
     return (
       <Key
         onMouseDown={() => playNote(note, octave)}
+        onMouseUp={() => stopNote(note, octave)}
+        onMouseLeave={() => stopNote(note, octave)}
         octave={isHanging ? 1 : octave}
       >
         {note}

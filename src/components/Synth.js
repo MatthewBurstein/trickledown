@@ -11,15 +11,30 @@ export default () => {
 
   const playNote = (key, octave) => {
     const realOctave = octave + 4
-    audioEngine.current.play(key + realOctave)
+    audioEngine.current.keyDown(key + realOctave)
+  }
+
+  const stopNote = (key, octave) => {
+    const realOctave = octave + 4
+    audioEngine.current.keyUp(key + realOctave)
+  }
+
+  const setAmpAttack = value => {
+    const engineValue = value > 0 ? value / 10 : 0
+    audioEngine.current.setAmpAttack(engineValue)
   }
 
   return (
     <EntireSynth>
-      <LeftControls />
+      <LeftControls setAmpAttack={setAmpAttack} />
       <Keyboard octaveNumber={2}>
-        <Octave playNote={playNote} number={0} />
-        <Octave playNote={playNote} number={1} isLast={true} />
+        <Octave playNote={playNote} stopNote={stopNote} number={0} />
+        <Octave
+          playNote={playNote}
+          stopNote={stopNote}
+          number={1}
+          isLast={true}
+        />
       </Keyboard>
       <Controls />
       <RotaryKnob />

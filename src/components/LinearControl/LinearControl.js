@@ -9,7 +9,7 @@ import {
   sliderHeight
 } from "./linearControlStyledComponents"
 
-export default ({ label }) => {
+export default ({ label, effectValue }) => {
   const [position, setPosition] = useState(sliderHeight)
 
   const handelSlide = clickEvent => {
@@ -24,6 +24,7 @@ export default ({ label }) => {
         newPosition = controlHeight
       }
       setPosition(newPosition)
+      effectValue(newPosition)
       oldCoord = moveEvent.clientY + change
     }
 
