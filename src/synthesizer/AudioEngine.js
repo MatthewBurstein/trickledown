@@ -2,12 +2,7 @@ import Tone from "tone"
 
 class AudioEngine {
   constructor() {
-    this.ampEnv = new Tone.AmplitudeEnvelope({
-      attack: 1.11,
-      decay: 0.21,
-      sustain: 0.5,
-      release: 3000
-    })
+    this.ampEnv = new Tone.AmplitudeEnvelope(initialValues.ampEnv)
     this.synth = new Tone.PolySynth(4, Tone.Synth)
     this.synth.chain(this.ampEnv, Tone.Master)
   }
@@ -37,3 +32,12 @@ class AudioEngine {
 }
 
 export default AudioEngine
+
+export const initialValues = {
+  ampEnv: {
+    attack: 0.3,
+    decay: 6,
+    sustain: 4.5,
+    release: 0.8
+  }
+}

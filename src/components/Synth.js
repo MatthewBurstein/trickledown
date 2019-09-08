@@ -3,6 +3,7 @@ import AudioEngine from "../synthesizer/AudioEngine"
 import Octave from "./Keyboard/Octave"
 import { Keyboard } from "./Keyboard/Keys"
 import LeftControls from "./LeftControls"
+import { controlToEnvelope } from "../synthesizer/controlValueConverter"
 import { EntireSynth, Controls } from "./SynthLayout"
 import RotaryKnob from "./RotaryControl/RotaryKnob"
 
@@ -20,13 +21,33 @@ export default () => {
   }
 
   const setAmpAttack = value => {
-    const engineValue = value > 0 ? value / 10 : 0
+    const engineValue = controlToEnvelope(value)
     audioEngine.current.setAmpAttack(engineValue)
+  }
+
+  const setAmpDecay = value => {
+    const engineValue = controlToEnvelope(value)
+    audioEngine.current.setAmpDecay(engineValue)
+  }
+
+  const setAmpSustain = value => {
+    const engineValue = controlToEnvelope(value)
+    audioEngine.current.setAmpSustain(engineValue)
+  }
+
+  const setAmpRelease = value => {
+    const engineValue = controlToEnvelope(value)
+    audioEngine.current.setAmpRelease(engineValue)
   }
 
   return (
     <EntireSynth>
-      <LeftControls setAmpAttack={setAmpAttack} />
+      <LeftControls
+        setAmpAttack={setAmpAttack}
+        setAmpDecay={setAmpDecay}
+        setAmpSustain={setAmpSustain}
+        setAmpRelease={setAmpRelease}
+      />
       <Keyboard octaveNumber={2}>
         <Octave playNote={playNote} stopNote={stopNote} number={0} />
         <Octave
