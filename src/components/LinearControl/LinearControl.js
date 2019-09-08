@@ -5,12 +5,11 @@ import {
   ControlContainer,
   Label,
   SliderContainer,
-  controlHeight,
-  sliderHeight
+  controlHeight
 } from "./linearControlStyledComponents"
 
 export default ({ label, effectValue }) => {
-  const [position, setPosition] = useState(sliderHeight)
+  const [position, setPosition] = useState(0)
 
   const handelSlide = clickEvent => {
     let oldCoord = clickEvent.clientY
@@ -18,8 +17,8 @@ export default ({ label, effectValue }) => {
     const moveListener = moveEvent => {
       const change = oldCoord - moveEvent.clientY
       let newPosition = position + change
-      if (newPosition < sliderHeight) {
-        newPosition = sliderHeight
+      if (newPosition < 0) {
+        newPosition = 0
       } else if (newPosition > controlHeight) {
         newPosition = controlHeight
       }

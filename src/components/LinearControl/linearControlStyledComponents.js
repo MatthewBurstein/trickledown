@@ -5,7 +5,7 @@ export const controlHeight = 100
 export const sliderHeight = 14
 
 export const Channel = styled.span`
-  height: ${controlHeight}px;
+  height: ${controlHeight + sliderHeight / 2}px;
   width: 2px;
   background-color: black;
   display: block;
@@ -20,7 +20,7 @@ export const Slider = styled.span`
   height: ${sliderHeight}px;
   display: block;
   margin-left: -11px;
-  margin-top: ${props => controlHeight - props.position}px;
+  margin-top: ${props => controlHeight - sliderHeight / 2 - props.position}px;
 `
 
 export const SliderContainer = styled.div`
