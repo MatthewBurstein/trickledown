@@ -1,5 +1,9 @@
 import React, { useState } from "react"
-import { KnobBody, Arrow, KnobContainer } from "./rotaryKnobStyledComponent"
+import {
+  ControlBody,
+  Arrow,
+  ControlContainer
+} from "./rotaryControlStyledComponent"
 
 export default () => {
   const [rotation, setRotation] = useState(0)
@@ -20,10 +24,12 @@ export default () => {
   }
 
   return (
-    <KnobContainer rotation={rotation} onMouseDown={e => handleClick(e)}>
-      <KnobBody>
-        <Arrow />
-      </KnobBody>
-    </KnobContainer>
+    <div>
+      <ControlContainer rotation={rotation} onMouseDown={e => handleClick(e)}>
+        <ControlBody>
+          <Arrow />
+        </ControlBody>
+      </ControlContainer>
+    </div>
   )
 }

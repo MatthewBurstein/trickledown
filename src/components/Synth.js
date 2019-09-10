@@ -5,7 +5,7 @@ import { Keyboard } from "./Keyboard/Keys"
 import LeftControls from "./LeftControls"
 import { controlToEnvelope } from "../synthesizer/controlValueConverter"
 import { EntireSynth, Controls } from "./SynthLayout"
-import RotaryKnob from "./RotaryControl/RotaryKnob"
+import RotaryControl from "./RotaryControl/RotaryControl"
 
 export default () => {
   const audioEngine = useRef(new AudioEngine())
@@ -58,7 +58,7 @@ export default () => {
         />
       </Keyboard>
       <Controls />
-      <RotaryKnob />
+      <RotaryControl />
     </EntireSynth>
   )
 }
