@@ -5,7 +5,6 @@ import { Keyboard } from "./Keyboard/Keys"
 import Controls from "./Controls"
 import { controlToEnvelope } from "../synthesizer/controlValueConverter"
 import { EntireSynth } from "./SynthLayout"
-import RotaryControl from "./RotaryControl/RotaryControl"
 
 export default () => {
   const audioEngine = useRef(new AudioEngine())
@@ -57,7 +56,6 @@ export default () => {
           isLast={true}
         />
       </Keyboard>
-      <RotaryControl />
     </EntireSynth>
   )
 }
