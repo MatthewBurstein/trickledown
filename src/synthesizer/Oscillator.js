@@ -1,10 +1,12 @@
 import Tone from "tone"
+import Filter from "./Filter"
 
 export default class Oscillator {
   constructor(note, ampEnvConfig) {
-    this.osc = new Tone.Oscillator(note).start()
+    this.osc = new Tone.Oscillator(note, "sawtooth").start()
     this.ampEnv = new Tone.AmplitudeEnvelope(ampEnvConfig)
-    this.osc.chain(this.ampEnv, Tone.Master)
+    this.filter = new Filter()
+    this.osc.chain(this.ampEnv, this.filter.getFilter(), Tone.Master)
   }
 
   play() {
