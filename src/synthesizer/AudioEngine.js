@@ -1,31 +1,29 @@
-import Tone from "tone"
+import Oscillator from "./Oscillator"
 
 class AudioEngine {
   constructor() {
-    this.osc = new Tone.Oscillator().start()
-    this.ampEnv = new Tone.AmplitudeEnvelope(initialValues.ampEnv)
-    this.osc.chain(this.ampEnv, Tone.Master)
+    this.notes = {}
+    this.ampEnvConfig = initialValues.ampEnv
   }
 
-  keyDown(note, octave) {
-    this.ampEnv.triggerAttack()
+  keyDown(note) {
+    this.notes[note] = new Oscillator(note, this.ampEnvConfig)
+    this.notes[note].play()
   }
 
-  keyUp(note, octave) {
-    this.ampEnv.triggerRelease()
+  keyUp(note) {
+    this.notes[note] && this.notes[note].stop()
   }
 
-  setAmpAttack(value) {
-    this.ampEnv.attack = value
+  setAmpEnv(property, value) {
+    this.ampEnvConfig[property] = value
+    this.changeAllNotes(note => {
+      note.setAmpEnv(property, value)
+    })
   }
-  setAmpDecay(value) {
-    this.ampEnv.decay = value
-  }
-  setAmpSustain(value) {
-    this.ampEnv.sustain = value
-  }
-  setAmpRelease(value) {
-    this.ampEnv.release = value
+
+  changeAllNotes(cb) {
+    Object.values(this.notes).forEach(note => cb(note))
   }
 }
 

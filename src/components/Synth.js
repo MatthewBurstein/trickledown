@@ -23,22 +23,22 @@ export default () => {
 
   const setAmpAttack = value => {
     const engineValue = controlToEnvelope(value)
-    audioEngine.current.setAmpAttack(engineValue)
+    audioEngine.current.setAmpEnv("attack", engineValue)
   }
 
   const setAmpDecay = value => {
     const engineValue = controlToEnvelope(value)
-    audioEngine.current.setAmpDecay(engineValue)
+    audioEngine.current.setAmpEnv("decay", engineValue)
   }
 
   const setAmpSustain = value => {
     const engineValue = controlToEnvelope(value)
-    audioEngine.current.setAmpSustain(engineValue)
+    audioEngine.current.setAmpEnv("sustain", engineValue)
   }
 
   const setAmpRelease = value => {
     const engineValue = controlToEnvelope(value)
-    audioEngine.current.setAmpRelease(engineValue)
+    audioEngine.current.setAmpEnv("release", engineValue)
   }
 
   return (
