@@ -6,8 +6,8 @@ import {
   ControlContainer
 } from "./rotaryControlStyledComponent"
 
-export default ({ title, effectValue }) => {
-  const [rotation, setRotation] = useRotation(0)
+export default ({ title, effectValue, initialValue }) => {
+  const [rotation, setRotation] = useRotation(initialValue)
   useEffect(() => effectValue(getRealValue(rotation)))
 
   const handleClick = clickEvent => {
@@ -38,8 +38,10 @@ export default ({ title, effectValue }) => {
 }
 
 const rotationOffset = -130
-const minRotation = 0 + rotationOffset
-const maxRotation = 260 + rotationOffset
+export const minRealRotaryValue = 0
+export const maxRealRotaryValue = 260
+const minRotation = minRealRotaryValue + rotationOffset
+const maxRotation = maxRealRotaryValue + rotationOffset
 
 const useRotation = initialValue => {
   const [value, setValue] = useState(initialValue + rotationOffset)

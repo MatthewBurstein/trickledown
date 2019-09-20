@@ -5,12 +5,20 @@ import {
   CutoffResonance
 } from "./filterControlsStyledComponents"
 import RotaryControl from "../RotaryControl/RotaryControl"
+import { initialValues } from "../../synthesizer/AudioEngine"
+import { filterEngineToControl } from "./filterValueConverter"
 
-export default ({ setAttack, setDecay, setSustain, setRelease }) => {
+const initialValue = filterEngineToControl(initialValues.filter.frequency)
+
+export default ({ setAttack, setDecay, setSustain, setRelease, setCutoff }) => {
   return (
     <FilterControlsContainer>
       <CutoffResonance>
-        <RotaryControl effectValue={() => {}} title="Cutoff" />
+        <RotaryControl
+          effectValue={setCutoff}
+          title="Cutoff"
+          initialValue={initialValue}
+        />
       </CutoffResonance>
 
       <Envelope

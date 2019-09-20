@@ -2,10 +2,10 @@ import Tone from "tone"
 import Filter from "./Filter"
 
 export default class Oscillator {
-  constructor(note, ampEnvConfig) {
+  constructor(note, config) {
     this.osc = new Tone.Oscillator(note, "sawtooth").start()
-    this.ampEnv = new Tone.AmplitudeEnvelope(ampEnvConfig)
-    this.filter = new Filter()
+    this.ampEnv = new Tone.AmplitudeEnvelope(config.amp)
+    this.filter = new Filter(config.filter)
     this.osc.chain(this.ampEnv, this.filter.getFilter(), Tone.Master)
   }
 
@@ -19,5 +19,9 @@ export default class Oscillator {
 
   setAmpEnv(property, value) {
     this.ampEnv[property] = value
+  }
+
+  setCutoff(value) {
+    this.filter.setCutoff(value)
   }
 }

@@ -7,7 +7,8 @@ export default ({
   setAmpAttack,
   setAmpDecay,
   setAmpSustain,
-  setAmpRelease
+  setAmpRelease,
+  setCutoff
 }) => {
   return (
     <Controls>
@@ -17,7 +18,7 @@ export default ({
         setAmpSustain={setAmpSustain}
         setAmpRelease={setAmpRelease}
       />
-      <FilterControls />
+      <FilterControls setCutoff={setCutoff} />
     </Controls>
   )
 }

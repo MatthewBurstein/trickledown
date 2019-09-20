@@ -1,8 +1,5 @@
-const envelopeFactor = 10
-export const envelopeToControl = envelopeValue => {
-  return envelopeValue * envelopeFactor
-}
-
-export const controlToEnvelope = controlValue => {
-  return controlValue > 0 ? controlValue / envelopeFactor : 0
+export const convertRangeToRange = (value, oldMin, oldMax, newMin, newMax) => {
+  const oldRange = oldMax - oldMin
+  const newRange = newMax - newMin
+  return ((value - oldMin) * newRange) / oldRange + newMin
 }

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-export const EntireSynth = styled.div`
+export const SynthUI = styled.div`
   display: flex;
   flex-direction: column;
   justify-items: center;

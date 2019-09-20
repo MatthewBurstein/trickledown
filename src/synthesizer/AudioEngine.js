@@ -1,13 +1,13 @@
 import Oscillator from "./Oscillator"
 
-class AudioEngine {
+export default class AudioEngine {
   constructor() {
     this.notes = {}
-    this.ampEnvConfig = initialValues.ampEnv
+    this.oscConfig = initialValues
   }
 
   keyDown(note) {
-    this.notes[note] = new Oscillator(note, this.ampEnvConfig)
+    this.notes[note] = new Oscillator(note, this.oscConfig)
     this.notes[note].play()
   }
 
@@ -16,10 +16,13 @@ class AudioEngine {
   }
 
   setAmpEnv(property, value) {
-    this.ampEnvConfig[property] = value
-    this.changeAllNotes(note => {
-      note.setAmpEnv(property, value)
-    })
+    this.oscConfig.amp[property] = value
+    this.changeAllNotes(note => note.setAmpEnv(property, value))
+  }
+
+  setCutoff(value) {
+    this.oscConfig.filter.frequency = value
+    this.changeAllNotes(note => note.setCutoff(value))
   }
 
   changeAllNotes(cb) {
@@ -27,13 +30,14 @@ class AudioEngine {
   }
 }
 
-export default AudioEngine
-
 export const initialValues = {
-  ampEnv: {
+  amp: {
     attack: 0.3,
     decay: 6,
     sustain: 4.5,
     release: 0.8
+  },
+  filter: {
+    frequency: 350
   }
 }

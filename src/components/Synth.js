@@ -3,8 +3,9 @@ import AudioEngine from "../synthesizer/AudioEngine"
 import Octave from "./Keyboard/Octave"
 import { Keyboard } from "./Keyboard/Keys"
 import Controls from "./Controls"
-import { controlToEnvelope } from "../synthesizer/controlValueConverter"
-import { EntireSynth } from "./SynthLayout"
+import { controlToEnvelope } from "./Envelope/envelopeValueConverter"
+import { filterControlToEngine } from "./FilterControls/filterValueConverter"
+import { SynthUI } from "./SynthLayout"
 
 export default () => {
   const audioEngine = useRef(new AudioEngine())
@@ -39,13 +40,19 @@ export default () => {
     audioEngine.current.setAmpEnv("release", engineValue)
   }
 
+  const setCutoff = value => {
+    const engineValue = filterControlToEngine(value)
+    audioEngine.current.setCutoff(engineValue)
+  }
+
   return (
-    <EntireSynth>
+    <SynthUI>
       <Controls
         setAmpAttack={setAmpAttack}
         setAmpDecay={setAmpDecay}
         setAmpSustain={setAmpSustain}
         setAmpRelease={setAmpRelease}
+        setCutoff={setCutoff}
       />
       <Keyboard octaveNumber={2}>
         <Octave playNote={playNote} stopNote={stopNote} number={0} />
@@ -56,6 +63,6 @@ export default () => {
           isLast={true}
         />
       </Keyboard>
-    </EntireSynth>
+    </SynthUI>
   )
 }
