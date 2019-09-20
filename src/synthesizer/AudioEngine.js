@@ -2,18 +2,16 @@ import Tone from "tone"
 
 class AudioEngine {
   constructor() {
+    this.osc = new Tone.Oscillator().start()
     this.ampEnv = new Tone.AmplitudeEnvelope(initialValues.ampEnv)
-    this.synth = new Tone.PolySynth(4, Tone.Synth)
-    this.synth.chain(this.ampEnv, Tone.Master)
+    this.osc.chain(this.ampEnv, Tone.Master)
   }
 
   keyDown(note, octave) {
-    this.synth.triggerAttack(note + octave)
     this.ampEnv.triggerAttack()
   }
 
   keyUp(note, octave) {
-    this.synth.triggerRelease(note + octave)
     this.ampEnv.triggerRelease()
   }
 
