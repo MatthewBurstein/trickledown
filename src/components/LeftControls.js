@@ -11,10 +11,11 @@ export default ({
   return (
     <Controls>
       <Envelope
-        setAmpAttack={setAmpAttack}
-        setAmpDecay={setAmpDecay}
-        setAmpSustain={setAmpSustain}
-        setAmpRelease={setAmpRelease}
+        title="Amp Env"
+        setAttack={setAmpAttack}
+        setDecay={setAmpDecay}
+        setSustain={setAmpSustain}
+        setRelease={setAmpRelease}
       />
     </Controls>
   )

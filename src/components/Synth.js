@@ -3,8 +3,9 @@ import AudioEngine from "../synthesizer/AudioEngine"
 import Octave from "./Keyboard/Octave"
 import { Keyboard } from "./Keyboard/Keys"
 import LeftControls from "./LeftControls"
+import RightControls from "./RightControls"
 import { controlToEnvelope } from "../synthesizer/controlValueConverter"
-import { EntireSynth, Controls } from "./SynthLayout"
+import { EntireSynth } from "./SynthLayout"
 import RotaryControl from "./RotaryControl/RotaryControl"
 
 export default () => {
@@ -57,7 +58,7 @@ export default () => {
           isLast={true}
         />
       </Keyboard>
-      <Controls />
+      <RightControls />
       <RotaryControl />
     </EntireSynth>
   )
