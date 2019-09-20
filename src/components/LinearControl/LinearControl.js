@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import {
   Channel,
   Slider,
@@ -10,6 +10,11 @@ import {
 
 export default ({ label, effectValue, initialValue }) => {
   const [position, setPosition] = useState(initialValue)
+  // TODO delete this line when filter env functionality is implemented
+  if (!effectValue) {
+    effectValue = () => {}
+  }
+  useEffect(() => effectValue(position))
 
   const handelSlide = clickEvent => {
     let oldCoord = clickEvent.clientY
@@ -23,7 +28,6 @@ export default ({ label, effectValue, initialValue }) => {
         newPosition = controlHeight
       }
       setPosition(newPosition)
-      effectValue(newPosition)
       oldCoord = moveEvent.clientY + change
     }
 
