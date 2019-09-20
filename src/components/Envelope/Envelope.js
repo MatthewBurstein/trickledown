@@ -1,5 +1,5 @@
 import React from "react"
-import LinerControl from "../LinearControl/LinearControl"
+import LinearControl from "../LinearControl/LinearControl"
 import {
   EnvelopeContainer,
   EnvelopeTitle,
@@ -13,22 +13,22 @@ export default ({ title, setAttack, setDecay, setSustain, setRelease }) => {
     <EnvelopeContainer>
       <EnvelopeTitle>{title}</EnvelopeTitle>
       <EnvelopeControlContainer>
-        <LinerControl
+        <LinearControl
           effectValue={setAttack}
           initialValue={envelopeToControl(initialValues.ampEnv.attack)}
           label="A"
         />
-        <LinerControl
+        <LinearControl
           effectValue={setDecay}
           initialValue={envelopeToControl(initialValues.ampEnv.decay)}
           label="D"
         />
-        <LinerControl
+        <LinearControl
           effectValue={setSustain}
           initialValue={envelopeToControl(initialValues.ampEnv.sustain)}
           label="S"
         />
-        <LinerControl
+        <LinearControl
           effectValue={setRelease}
           initialValue={envelopeToControl(initialValues.ampEnv.release)}
           label="R"

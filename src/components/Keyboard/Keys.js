@@ -3,7 +3,7 @@ import colors from "../../ColorPalette"
 
 const { DARK_GREY, PALE_PINK, PALEST_PINK, MAROON, DARK_MAROON } = colors
 
-const keyboardHeight = 200
+const keyboardHeight = 80
 const whiteKeyWidth = 40
 const blackKeyWidth = 30
 
@@ -31,7 +31,7 @@ const genericKey = css`
 
 const blackKey = whiteKeysToLeft => styled.div`
   ${genericKey}
-  height: 120px;
+  height: ${keyboardHeight * 0.6}px;
   width: ${blackKeyWidth}px;
   left: ${props =>
     whiteKeyWidth * props.octave * 7 +
@@ -51,7 +51,7 @@ const blackKey = whiteKeysToLeft => styled.div`
 
 const whiteKey = (whiteKeysToLeft, isLast) => styled.div`
   ${genericKey}
-  height: 200px;
+  height: ${keyboardHeight}px;
   width: ${whiteKeyWidth}px;
   left: ${props =>
     whiteKeyWidth * props.octave * 7 + whiteKeysToLeft * whiteKeyWidth}px;

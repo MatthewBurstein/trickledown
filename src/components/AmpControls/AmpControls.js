@@ -1,6 +1,6 @@
 import React from "react"
-import { Controls } from "./SynthLayout"
-import Envelope from "./Envelope/Envelope"
+import Envelope from "../Envelope/Envelope"
+import { AmpControlsContainer } from "./ampControlsStyledComponents"
 
 export default ({
   setAmpAttack,
@@ -9,7 +9,7 @@ export default ({
   setAmpRelease
 }) => {
   return (
-    <Controls>
+    <AmpControlsContainer>
       <Envelope
         title="Amp Env"
         setAttack={setAmpAttack}
@@ -17,6 +17,6 @@ export default ({
         setSustain={setAmpSustain}
         setRelease={setAmpRelease}
       />
-    </Controls>
+    </AmpControlsContainer>
   )
 }
