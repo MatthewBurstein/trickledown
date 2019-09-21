@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import colors from "../../ColorPalette"
+import { genericControlTitle } from "../SynthLayout"
 
 export const controlHeight = 100
 export const sliderHeight = 14
@@ -49,4 +50,5 @@ export const ControlContainer = styled.div`
 export const Label = styled.div`
   user-select: none;
   text-align: center;
+  ${genericControlTitle}
 `

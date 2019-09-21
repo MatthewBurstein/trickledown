@@ -25,6 +25,11 @@ export default class AudioEngine {
     this.changeAllNotes(note => note.setCutoff(value))
   }
 
+  setResonance(value) {
+    this.oscConfig.filter.resonance = value
+    this.changeAllNotes(note => note.setResonance(value))
+  }
+
   changeAllNotes(cb) {
     Object.values(this.notes).forEach(note => cb(note))
   }
@@ -38,6 +43,7 @@ export const initialValues = {
     release: 0.8
   },
   filter: {
-    frequency: 350
+    frequency: 350,
+    resonance: 1
   }
 }

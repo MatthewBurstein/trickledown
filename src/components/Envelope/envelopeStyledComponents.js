@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { genericControlTitle } from "../SynthLayout"
 
 export const EnvelopeContainer = styled.div`
   display: flex;
@@ -9,4 +10,6 @@ export const EnvelopeControlContainer = styled.div`
   display: flex;
 `
 
-export const EnvelopeTitle = styled.div``
+export const EnvelopeTitle = styled.div`
+  ${genericControlTitle}
+`

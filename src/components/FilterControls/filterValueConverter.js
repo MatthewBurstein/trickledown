@@ -4,26 +4,47 @@ import {
   maxRealRotaryValue
 } from "../RotaryControl/RotaryControl"
 
-const minFilterValue = 20
-const maxFilterValue = 20 * 1000
+const minCutoffValue = 20
+const maxCutoffValue = 20 * 1000
 
-export const filterControlToEngine = rotaryValue => {
+export const cutoffControlToEngine = rotaryValue => {
   return Math.exp(
     convertRangeToRange(
       rotaryValue,
       minRealRotaryValue,
       maxRealRotaryValue,
-      Math.log(minFilterValue),
-      Math.log(maxFilterValue)
+      Math.log(minCutoffValue),
+      Math.log(maxCutoffValue)
     )
   )
 }
 
-export const filterEngineToControl = engineValue =>
+export const cutoffEngineToControl = engineValue =>
   convertRangeToRange(
     Math.log(engineValue),
-    Math.log(minFilterValue),
-    Math.log(maxFilterValue),
+    Math.log(minCutoffValue),
+    Math.log(maxCutoffValue),
+    minRealRotaryValue,
+    maxRealRotaryValue
+  )
+
+const minResonanceValue = 0.0001
+const maxResonanceValue = 800
+
+export const resonanceControlToEngine = rotaryValue =>
+  convertRangeToRange(
+    rotaryValue,
+    minRealRotaryValue,
+    maxRealRotaryValue,
+    minResonanceValue,
+    maxResonanceValue
+  )
+
+export const resonanceEngineToControl = engineValue =>
+  convertRangeToRange(
+    engineValue,
+    minResonanceValue,
+    maxResonanceValue,
     minRealRotaryValue,
     maxRealRotaryValue
   )

@@ -2,27 +2,41 @@ import React from "react"
 import Envelope from "../Envelope/Envelope"
 import {
   FilterControlsContainer,
-  CutoffResonance
+  CutoffResonance,
+  FilterTitle
 } from "./filterControlsStyledComponents"
 import RotaryControl from "../RotaryControl/RotaryControl"
 import { initialValues } from "../../synthesizer/AudioEngine"
-import { filterEngineToControl } from "./filterValueConverter"
+import { cutoffEngineToControl } from "./filterValueConverter"
 
-const initialValue = filterEngineToControl(initialValues.filter.frequency)
+const initialCutoffValue = cutoffEngineToControl(initialValues.filter.frequency)
+const initialResonanceValue = initialValues.filter.resonance
 
-export default ({ setAttack, setDecay, setSustain, setRelease, setCutoff }) => {
+export default ({
+  setCutoff,
+  setResonance,
+  setAttack,
+  setDecay,
+  setSustain,
+  setRelease
+}) => {
   return (
     <FilterControlsContainer>
+      <FilterTitle>Filter</FilterTitle>
       <CutoffResonance>
         <RotaryControl
           effectValue={setCutoff}
           title="Cutoff"
-          initialValue={initialValue}
+          initialValue={initialCutoffValue}
+        />
+        <RotaryControl
+          effectValue={setResonance}
+          title="Resonance"
+          initialValue={initialResonanceValue}
         />
       </CutoffResonance>
 
       <Envelope
-        title="Filter Env"
         setAttack={setAttack}
         setDecay={setDecay}
         setSustain={setSustain}

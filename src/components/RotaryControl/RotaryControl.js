@@ -3,7 +3,8 @@ import {
   ControlBody,
   Arrow,
   KnobContainer,
-  ControlContainer
+  ControlContainer,
+  ControlTitle
 } from "./rotaryControlStyledComponent"
 
 export default ({ title, effectValue, initialValue }) => {
@@ -27,7 +28,7 @@ export default ({ title, effectValue, initialValue }) => {
 
   return (
     <ControlContainer>
-      {title}
+      <ControlTitle>{title}</ControlTitle>
       <KnobContainer rotation={rotation} onMouseDown={e => handleClick(e)}>
         <ControlBody>
           <Arrow />

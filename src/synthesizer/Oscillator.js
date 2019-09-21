@@ -1,12 +1,12 @@
 import Tone from "tone"
-import Filter from "./Filter"
 
 export default class Oscillator {
   constructor(note, config) {
     this.osc = new Tone.Oscillator(note, "sawtooth").start()
     this.ampEnv = new Tone.AmplitudeEnvelope(config.amp)
-    this.filter = new Filter(config.filter)
-    this.osc.chain(this.ampEnv, this.filter.getFilter(), Tone.Master)
+    this.filter = new Tone.Filter(config.filter.frequency)
+    this.setResonance(config.filter.resonance)
+    this.osc.chain(this.filter, this.ampEnv, Tone.Master)
   }
 
   play() {
@@ -22,6 +22,11 @@ export default class Oscillator {
   }
 
   setCutoff(value) {
-    this.filter.setCutoff(value)
+    this.filter.frequency.value = value
+  }
+
+  setResonance(value) {
+    console.log("in here")
+    this.filter.Q.value = value
   }
 }

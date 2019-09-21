@@ -4,11 +4,12 @@ import AmpControls from "./AmpControls/AmpControls"
 import FilterControls from "./FilterControls/FilterControls"
 
 export default ({
+  setCutoff,
+  setResonance,
   setAmpAttack,
   setAmpDecay,
   setAmpSustain,
-  setAmpRelease,
-  setCutoff
+  setAmpRelease
 }) => {
   return (
     <Controls>
@@ -18,7 +19,7 @@ export default ({
         setAmpSustain={setAmpSustain}
         setAmpRelease={setAmpRelease}
       />
-      <FilterControls setCutoff={setCutoff} />
+      <FilterControls setCutoff={setCutoff} setResonance={setResonance} />
     </Controls>
   )
 }

@@ -10,7 +10,13 @@ export const SynthUI = styled.div`
 export const Controls = styled.div`
   display: flex;
 `
+
 export const genericControlContainer = css`
   margin: 4px;
   border: 1px solid black;
+  padding: 2px;
+`
+
+export const genericControlTitle = css`
+  padding: 2px;
 `

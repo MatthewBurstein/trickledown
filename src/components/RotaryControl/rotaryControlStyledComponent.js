@@ -1,6 +1,6 @@
 import styled from "styled-components"
-
 import colors from "../../ColorPalette"
+import { genericControlTitle } from "../SynthLayout"
 
 export const ControlContainer = styled.div`
   display: flex;
@@ -43,4 +43,8 @@ export const Arrow = styled.div`
     border-left: 2px solid transparent;
     border-right: 2px solid transparent;
   }
+`
+
+export const ControlTitle = styled.div`
+  ${genericControlTitle}
 `

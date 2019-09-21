@@ -4,7 +4,7 @@ import Octave from "./Keyboard/Octave"
 import { Keyboard } from "./Keyboard/Keys"
 import Controls from "./Controls"
 import { controlToEnvelope } from "./Envelope/envelopeValueConverter"
-import { filterControlToEngine } from "./FilterControls/filterValueConverter"
+import { cutoffControlToEngine } from "./FilterControls/filterValueConverter"
 import { SynthUI } from "./SynthLayout"
 
 export default () => {
@@ -41,8 +41,11 @@ export default () => {
   }
 
   const setCutoff = value => {
-    const engineValue = filterControlToEngine(value)
+    const engineValue = cutoffControlToEngine(value)
     audioEngine.current.setCutoff(engineValue)
+  }
+  const setResonance = value => {
+    audioEngine.current.setResonance(value)
   }
 
   return (
@@ -53,6 +56,7 @@ export default () => {
         setAmpSustain={setAmpSustain}
         setAmpRelease={setAmpRelease}
         setCutoff={setCutoff}
+        setResonance={setResonance}
       />
       <Keyboard octaveNumber={2}>
         <Octave playNote={playNote} stopNote={stopNote} number={0} />

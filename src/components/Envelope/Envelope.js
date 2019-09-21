@@ -11,7 +11,7 @@ import { envelopeToControl } from "./envelopeValueConverter"
 export default ({ title, setAttack, setDecay, setSustain, setRelease }) => {
   return (
     <EnvelopeContainer>
-      <EnvelopeTitle>{title}</EnvelopeTitle>
+      {title && <EnvelopeTitle>{title}</EnvelopeTitle>}
       <EnvelopeControlContainer>
         <LinearControl
           effectValue={setAttack}
