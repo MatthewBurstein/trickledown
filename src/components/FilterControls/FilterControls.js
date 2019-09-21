@@ -1,6 +1,7 @@
 import React from "react"
 import Envelope from "../Envelope/Envelope"
 import {
+  FilterTitleAndControlsContainer,
   FilterControlsContainer,
   CutoffResonance,
   FilterTitle
@@ -21,27 +22,29 @@ export default ({
   setRelease
 }) => {
   return (
-    <FilterControlsContainer>
+    <FilterTitleAndControlsContainer>
       <FilterTitle>Filter</FilterTitle>
-      <CutoffResonance>
-        <RotaryControl
-          effectValue={setCutoff}
-          title="Cutoff"
-          initialValue={initialCutoffValue}
-        />
-        <RotaryControl
-          effectValue={setResonance}
-          title="Resonance"
-          initialValue={initialResonanceValue}
-        />
-      </CutoffResonance>
+      <FilterControlsContainer>
+        <CutoffResonance>
+          <RotaryControl
+            effectValue={setCutoff}
+            title="Cutoff"
+            initialValue={initialCutoffValue}
+          />
+          <RotaryControl
+            effectValue={setResonance}
+            title="Res"
+            initialValue={initialResonanceValue}
+          />
+        </CutoffResonance>
 
-      <Envelope
-        setAttack={setAttack}
-        setDecay={setDecay}
-        setSustain={setSustain}
-        setRelease={setRelease}
-      />
-    </FilterControlsContainer>
+        <Envelope
+          setAttack={setAttack}
+          setDecay={setDecay}
+          setSustain={setSustain}
+          setRelease={setRelease}
+        />
+      </FilterControlsContainer>
+    </FilterTitleAndControlsContainer>
   )
 }

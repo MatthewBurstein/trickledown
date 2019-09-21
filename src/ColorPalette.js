@@ -3,6 +3,7 @@ export default {
   LIGHT_GREY: "#a6a6a6",
   TURQOISE: "#48cfb6",
   PURPLE: "#6311ba",
+  LIGHT_PURPLE: "#9400ff",
   MAROON: "#381a21",
   DARK_MAROON: "#300a13",
   PALE_PINK: "#ffd1d9",

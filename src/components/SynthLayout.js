@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import colors from "../ColorPalette"
 
 export const SynthUI = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ export const Controls = styled.div`
 
 export const genericControlContainer = css`
   margin: 4px;
-  border: 1px solid black;
+  border: 1px solid ${colors.LIGHT_PURPLE};
   padding: 2px;
 `
 

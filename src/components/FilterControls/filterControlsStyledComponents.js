@@ -1,11 +1,16 @@
 import styled from "styled-components"
 import { genericControlContainer, genericControlTitle } from "../SynthLayout"
 
-export const FilterControlsContainer = styled.div`
+export const FilterTitleAndControlsContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   ${genericControlContainer};
 `
+
+export const FilterControlsContainer = styled.div`
+  display: flex;
+`
+
 export const CutoffResonance = styled.div`
   display: flex;
   flex-direction: column;
@@ -13,6 +18,6 @@ export const CutoffResonance = styled.div`
 `
 
 export const FilterTitle = styled.div`
-  width: 100%;
+  flex-basis: 100%;
   ${genericControlTitle}
 `
