@@ -19,10 +19,11 @@ export const KnobContainer = styled.div.attrs(props => {
 `
 
 export const ControlBody = styled.div`
-  background-color: black;
+  background-color: ${colors.DARK_GREY};
   height: 30px;
   width: 30px;
   border-radius: 15px;
+  border: 1px solid black;
   display: flex;
   justify-content: center;
 `
