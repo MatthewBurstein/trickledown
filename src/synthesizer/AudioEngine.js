@@ -20,6 +20,11 @@ export default class AudioEngine {
     this.changeAllNotes(note => note.setAmpEnv(property, value))
   }
 
+  setFilterEnv(property, value) {
+    this.oscConfig.filter.env[property] = value
+    this.changeAllNotes(note => note.setFilterEnv(property, value))
+  }
+
   setCutoff(value) {
     this.oscConfig.filter.frequency = value
     this.changeAllNotes(note => note.setCutoff(value))
@@ -44,6 +49,12 @@ export const initialValues = {
   },
   filter: {
     frequency: 350,
-    resonance: 1
+    resonance: 1,
+    env: {
+      attack: 0.3,
+      decay: 6,
+      sustain: 4.5,
+      release: 0.8
+    }
   }
 }

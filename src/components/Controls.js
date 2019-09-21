@@ -9,17 +9,22 @@ export default ({
   setAmpAttack,
   setAmpDecay,
   setAmpSustain,
-  setAmpRelease
+  setAmpRelease,
+  setFilterEnv
 }) => {
   return (
     <Controls>
-      <AmpControls
+      {/* <AmpControls
         setAmpAttack={setAmpAttack}
         setAmpDecay={setAmpDecay}
         setAmpSustain={setAmpSustain}
         setAmpRelease={setAmpRelease}
+      /> */}
+      <FilterControls
+        setCutoff={setCutoff}
+        setResonance={setResonance}
+        setEnv={setFilterEnv}
       />
-      <FilterControls setCutoff={setCutoff} setResonance={setResonance} />
     </Controls>
   )
 }

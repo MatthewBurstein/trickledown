@@ -10,10 +10,6 @@ import {
 
 export default ({ label, effectValue, initialValue }) => {
   const [position, setPosition] = useState(initialValue)
-  // TODO delete this line when filter env functionality is implemented
-  if (!effectValue) {
-    effectValue = () => {}
-  }
   useEffect(() => effectValue(position))
 
   const handelSlide = clickEvent => {

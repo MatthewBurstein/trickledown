@@ -40,6 +40,13 @@ export default () => {
     audioEngine.current.setAmpEnv("release", engineValue)
   }
 
+  const setFilterEnv = property => {
+    return value => {
+      const engineValue = controlToEnvelope(value)
+      audioEngine.current.setFilterEnv(property, engineValue)
+    }
+  }
+
   const setCutoff = value => {
     const engineValue = cutoffControlToEngine(value)
     audioEngine.current.setCutoff(engineValue)
@@ -51,6 +58,7 @@ export default () => {
   return (
     <SynthUI>
       <Controls
+        setFilterEnv={setFilterEnv}
         setAmpAttack={setAmpAttack}
         setAmpDecay={setAmpDecay}
         setAmpSustain={setAmpSustain}

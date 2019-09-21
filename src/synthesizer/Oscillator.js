@@ -5,16 +5,20 @@ export default class Oscillator {
     this.osc = new Tone.Oscillator(note, "sawtooth").start()
     this.ampEnv = new Tone.AmplitudeEnvelope(config.amp)
     this.filter = new Tone.Filter(config.filter.frequency)
+    this.filterEnv = new Tone.FrequencyEnvelope(config.filter.env)
+    this.filterEnv.connect(this.filter.frequency)
     this.setResonance(config.filter.resonance)
     this.osc.chain(this.filter, this.ampEnv, Tone.Master)
   }
 
   play() {
     this.ampEnv.triggerAttack()
+    this.filterEnv.triggerAttack()
   }
 
   stop() {
     this.ampEnv.triggerRelease()
+    this.filterEnv.triggerRelease()
   }
 
   setAmpEnv(property, value) {
@@ -26,7 +30,10 @@ export default class Oscillator {
   }
 
   setResonance(value) {
-    console.log("in here")
     this.filter.Q.value = value
+  }
+
+  setFilterEnv(property, value) {
+    this.filterEnv[property] = value
   }
 }

@@ -5,32 +5,39 @@ import {
   EnvelopeTitle,
   EnvelopeControlContainer
 } from "./envelopeStyledComponents"
-import { initialValues } from "../../synthesizer/AudioEngine"
 import { envelopeToControl } from "./envelopeValueConverter"
 
-export default ({ title, setAttack, setDecay, setSustain, setRelease }) => {
+export default ({
+  title,
+  setValue,
+  setAttack,
+  setDecay,
+  setSustain,
+  setRelease,
+  initialValues
+}) => {
   return (
     <EnvelopeContainer>
       {title && <EnvelopeTitle>{title}</EnvelopeTitle>}
       <EnvelopeControlContainer>
         <LinearControl
-          effectValue={setAttack}
-          initialValue={envelopeToControl(initialValues.amp.attack)}
+          effectValue={setValue("attack")}
+          initialValue={envelopeToControl(initialValues.attack)}
           label="A"
         />
         <LinearControl
-          effectValue={setDecay}
-          initialValue={envelopeToControl(initialValues.amp.decay)}
+          effectValue={setValue("decay")}
+          initialValue={envelopeToControl(initialValues.decay)}
           label="D"
         />
         <LinearControl
-          effectValue={setSustain}
-          initialValue={envelopeToControl(initialValues.amp.sustain)}
+          effectValue={setValue("sustain")}
+          initialValue={envelopeToControl(initialValues.sustain)}
           label="S"
         />
         <LinearControl
-          effectValue={setRelease}
-          initialValue={envelopeToControl(initialValues.amp.release)}
+          effectValue={setValue("release")}
+          initialValue={envelopeToControl(initialValues.release)}
           label="R"
         />
       </EnvelopeControlContainer>

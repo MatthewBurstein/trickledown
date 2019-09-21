@@ -1,6 +1,7 @@
 import React from "react"
 import Envelope from "../Envelope/Envelope"
 import { AmpControlsContainer } from "./ampControlsStyledComponents"
+import { initialValues } from "../../synthesizer/AudioEngine"
 
 export default ({
   setAmpAttack,
@@ -16,6 +17,7 @@ export default ({
         setDecay={setAmpDecay}
         setSustain={setAmpSustain}
         setRelease={setAmpRelease}
+        initialValues={initialValues.amp}
       />
     </AmpControlsContainer>
   )

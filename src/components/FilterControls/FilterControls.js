@@ -19,7 +19,8 @@ export default ({
   setAttack,
   setDecay,
   setSustain,
-  setRelease
+  setRelease,
+  setEnv
 }) => {
   return (
     <FilterTitleAndControlsContainer>
@@ -38,12 +39,7 @@ export default ({
           />
         </CutoffResonance>
 
-        <Envelope
-          setAttack={setAttack}
-          setDecay={setDecay}
-          setSustain={setSustain}
-          setRelease={setRelease}
-        />
+        <Envelope setValue={setEnv} initialValues={initialValues.filter.env} />
       </FilterControlsContainer>
     </FilterTitleAndControlsContainer>
   )
