@@ -20,31 +20,14 @@ export default () => {
     audioEngine.current.keyUp(key + realOctave)
   }
 
-  const setAmpAttack = value => {
-    const engineValue = controlToEnvelope(value)
-    audioEngine.current.setAmpEnv("attack", engineValue)
-  }
-
-  const setAmpDecay = value => {
-    const engineValue = controlToEnvelope(value)
-    audioEngine.current.setAmpEnv("decay", engineValue)
-  }
-
-  const setAmpSustain = value => {
-    const engineValue = controlToEnvelope(value)
-    audioEngine.current.setAmpEnv("sustain", engineValue)
-  }
-
-  const setAmpRelease = value => {
-    const engineValue = controlToEnvelope(value)
-    audioEngine.current.setAmpEnv("release", engineValue)
+  const setAmpEnv = property => {
+    return value =>
+      audioEngine.current.setAmpEnv(property, controlToEnvelope(value))
   }
 
   const setFilterEnv = property => {
-    return value => {
-      const engineValue = controlToEnvelope(value)
-      audioEngine.current.setFilterEnv(property, engineValue)
-    }
+    return value =>
+      audioEngine.current.setFilterEnv(property, controlToEnvelope(value))
   }
 
   const setCutoff = value => {
@@ -59,10 +42,7 @@ export default () => {
     <SynthUI>
       <Controls
         setFilterEnv={setFilterEnv}
-        setAmpAttack={setAmpAttack}
-        setAmpDecay={setAmpDecay}
-        setAmpSustain={setAmpSustain}
-        setAmpRelease={setAmpRelease}
+        setAmpEnv={setAmpEnv}
         setCutoff={setCutoff}
         setResonance={setResonance}
       />

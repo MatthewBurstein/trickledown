@@ -7,15 +7,7 @@ import {
 } from "./envelopeStyledComponents"
 import { envelopeToControl } from "./envelopeValueConverter"
 
-export default ({
-  title,
-  setValue,
-  setAttack,
-  setDecay,
-  setSustain,
-  setRelease,
-  initialValues
-}) => {
+export default ({ title, setValue, initialValues }) => {
   return (
     <EnvelopeContainer>
       {title && <EnvelopeTitle>{title}</EnvelopeTitle>}

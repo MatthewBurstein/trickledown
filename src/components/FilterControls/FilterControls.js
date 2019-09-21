@@ -13,15 +13,7 @@ import { cutoffEngineToControl } from "./filterValueConverter"
 const initialCutoffValue = cutoffEngineToControl(initialValues.filter.frequency)
 const initialResonanceValue = initialValues.filter.resonance
 
-export default ({
-  setCutoff,
-  setResonance,
-  setAttack,
-  setDecay,
-  setSustain,
-  setRelease,
-  setEnv
-}) => {
+export default ({ setCutoff, setResonance, setEnv }) => {
   return (
     <FilterTitleAndControlsContainer>
       <FilterTitle>Filter</FilterTitle>
