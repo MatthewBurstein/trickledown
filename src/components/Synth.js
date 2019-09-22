@@ -22,12 +22,15 @@ export default () => {
 
   const setAmpEnv = property => {
     return value =>
-      audioEngine.current.setAmpEnv(property, controlToEngine(value))
+      audioEngine.current.setAmpEnv(property, controlToEngine[property](value))
   }
 
   const setFilterEnv = property => {
     return value =>
-      audioEngine.current.setFilterEnv(property, controlToEngine(value))
+      audioEngine.current.setFilterEnv(
+        property,
+        controlToEngine[property](value)
+      )
   }
 
   const setCutoff = value => {

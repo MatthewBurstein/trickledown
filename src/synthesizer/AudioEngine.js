@@ -52,7 +52,7 @@ export const initialValues = {
   amp: {
     attack: 0.3,
     decay: 6,
-    sustain: 4.5,
+    sustain: 0.5,
     release: 0.8
   },
   filter: {
@@ -61,7 +61,7 @@ export const initialValues = {
     env: {
       attack: 0.3,
       decay: 6,
-      sustain: 4.5,
+      sustain: 0.5,
       release: 0.8
     }
   }

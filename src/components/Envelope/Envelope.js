@@ -23,7 +23,7 @@ export default ({ title, setValue, initialValues }) => {
           <LinearControl
             key={name}
             effectValue={setValue(name)}
-            initialValue={engineToControl(initialValues[name])}
+            initialValue={engineToControl[name](initialValues[name])}
             label={label}
           />
         ))}
