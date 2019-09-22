@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import {
   Channel,
   Slider,
@@ -9,10 +9,22 @@ import {
 } from "./linearControlStyledComponents"
 
 export default ({ label, effectValue, initialValue }) => {
+  const channelContainer = useRef(null)
+  const sliderBottomYCoord = useRef(null)
+
   const [position, setPosition] = useState(initialValue)
+
   useEffect(() => effectValue(position))
 
+  useEffect(() => {
+    sliderBottomYCoord.current = channelContainer.current.getBoundingClientRect().bottom
+  }, [])
+
+  const handleChannelClick = event =>
+    setPosition(sliderBottomYCoord.current - event.clientY)
+
   const handelSlide = clickEvent => {
+    clickEvent.stopPropagation()
     let oldCoord = clickEvent.clientY
 
     const moveListener = moveEvent => {
@@ -35,7 +47,10 @@ export default ({ label, effectValue, initialValue }) => {
 
   return (
     <ControlContainer id="contolContainer">
-      <SliderContainer>
+      <SliderContainer
+        ref={channelContainer}
+        onMouseDown={e => handleChannelClick(e)}
+      >
         <Channel />
         <Slider onMouseDown={e => handelSlide(e)} position={position} />
       </SliderContainer>
