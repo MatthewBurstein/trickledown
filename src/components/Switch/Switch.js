@@ -1,31 +1,40 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import {
   Control,
   Channel,
   Switch,
   Labels,
-  Label
+  Label,
+  SwitchTitle,
+  ControlAndTitle
 } from "./switchStyledComponents"
 
-export default ({ labels }) => {
-  const [option, setOption] = useState(0)
+export default ({ options, initialOption, title, effectValue }) => {
+  const [currentOption, setCurrentOption] = useState(initialOption)
+  useEffect(() => {
+    effectValue(options[currentOption])
+  })
 
-  const handleClick = () => setOption((option + 1) % labels.length)
+  const handleClick = () =>
+    setCurrentOption((currentOption + 1) % options.length)
 
   return (
-    <Control>
-      <Channel onClick={handleClick} optionCount={labels.length}>
-        <Switch option={option} />
-      </Channel>
-      <Labels>
-        {labels.map((label, idx) => {
-          return (
-            <Label last={idx === labels.length - 1} key={label}>
-              {label}
-            </Label>
-          )
-        })}
-      </Labels>
-    </Control>
+    <ControlAndTitle>
+      {title && <SwitchTitle>{title}</SwitchTitle>}
+      <Control>
+        <Channel onClick={handleClick} optionCount={options.length}>
+          <Switch option={currentOption} />
+        </Channel>
+        <Labels>
+          {options.map((option, idx) => {
+            return (
+              <Label last={idx === options.length - 1} key={option}>
+                {option}
+              </Label>
+            )
+          })}
+        </Labels>
+      </Control>
+    </ControlAndTitle>
   )
 }

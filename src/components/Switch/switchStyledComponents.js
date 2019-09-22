@@ -1,8 +1,14 @@
 import styled from "styled-components"
 import colors from "../../ColorPalette"
+import { genericControlTitle } from "../SynthLayout"
 
 const labelLineHeight = 20
 const switchHeight = 10
+
+export const ControlAndTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 export const Control = styled.div`
   position: relative;
@@ -37,4 +43,8 @@ export const Labels = styled.div`
 export const Label = styled.div`
   text-align: left;
   margin-top: ${props => (props.last ? "-1px" : "")};
+`
+
+export const SwitchTitle = styled.div`
+  ${genericControlTitle}
 `
