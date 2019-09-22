@@ -1,6 +1,7 @@
 import React from "react"
 import { OscControlsContainer } from "./oscControlsStyledComponents"
 import Switch from "../Switch/Switch"
+import { initialValues } from "../../synthesizer/AudioEngine"
 
 export default ({ setWaveform }) => {
   return (
@@ -8,7 +9,7 @@ export default ({ setWaveform }) => {
       <Switch
         title="Waveform"
         options={["sine", "square", "triangle", "sawtooth"]}
-        initialOption={0}
+        initialOption={initialValues.osc.type}
         effectValue={setWaveform}
       />
     </OscControlsContainer>

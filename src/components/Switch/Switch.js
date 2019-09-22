@@ -10,7 +10,13 @@ import {
 } from "./switchStyledComponents"
 
 export default ({ options, initialOption, title, effectValue }) => {
-  const [currentOption, setCurrentOption] = useState(initialOption)
+  const initialValueIndex =
+    typeof initialOption === "string"
+      ? options.findIndex(opt => opt === initialOption)
+      : initialOption
+
+  const [currentOption, setCurrentOption] = useState(initialValueIndex)
+
   useEffect(() => {
     effectValue(options[currentOption])
   })

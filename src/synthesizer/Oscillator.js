@@ -4,10 +4,13 @@ export default class Oscillator {
   constructor(note, config) {
     this.osc = new Tone.Oscillator(note, config.type).start()
     this.ampEnv = new Tone.AmplitudeEnvelope(config.amp)
+
     this.filter = new Tone.Filter(config.filter.frequency)
+    this.setResonance(config.filter.resonance)
+
     this.filterEnv = new Tone.FrequencyEnvelope(config.filter.env)
     this.filterEnv.connect(this.filter.frequency)
-    this.setResonance(config.filter.resonance)
+
     this.osc.chain(this.filter, this.ampEnv, Tone.Master)
   }
 
