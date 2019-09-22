@@ -2,7 +2,7 @@ import Tone from "tone"
 
 export default class Oscillator {
   constructor(note, config) {
-    this.osc = new Tone.Oscillator(note, "sawtooth").start()
+    this.osc = new Tone.Oscillator(note, config.type).start()
     this.ampEnv = new Tone.AmplitudeEnvelope(config.amp)
     this.filter = new Tone.Filter(config.filter.frequency)
     this.filterEnv = new Tone.FrequencyEnvelope(config.filter.env)

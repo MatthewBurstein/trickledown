@@ -6,6 +6,11 @@ export default class AudioEngine {
     this.oscConfig = initialValues
   }
 
+  setWaveform(waveform) {
+    this.oscConfig.type = waveform
+    this.changeAllNotes(note => (note.osc.type = waveform))
+  }
+
   keyDown(note) {
     this.notes[note] = new Oscillator(note, this.oscConfig)
     this.notes[note].play()
@@ -41,6 +46,9 @@ export default class AudioEngine {
 }
 
 export const initialValues = {
+  osc: {
+    type: "sine"
+  },
   amp: {
     attack: 0.3,
     decay: 6,

@@ -1,19 +1,25 @@
 import React from "react"
 import { Controls } from "./SynthLayout"
 import AmpControls from "./AmpControls/AmpControls"
+import OscControls from "./OscControls/OscControls"
 import FilterControls from "./FilterControls/FilterControls"
-import Switch from "./Switch/Switch"
 
-export default ({ setCutoff, setResonance, setAmpEnv, setFilterEnv }) => {
+export default ({
+  setWaveform,
+  setCutoff,
+  setResonance,
+  setAmpEnv,
+  setFilterEnv
+}) => {
   return (
     <Controls>
+      <OscControls setWaveform={setWaveform} />
       <AmpControls setEnv={setAmpEnv} />
       <FilterControls
         setCutoff={setCutoff}
         setResonance={setResonance}
         setEnv={setFilterEnv}
       />
-      <Switch labels={["sine", "square", "triangle", "noise"]} />
     </Controls>
   )
 }

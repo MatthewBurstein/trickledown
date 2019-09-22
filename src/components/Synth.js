@@ -34,9 +34,10 @@ export default () => {
     const engineValue = cutoffControlToEngine(value)
     audioEngine.current.setCutoff(engineValue)
   }
-  const setResonance = value => {
-    audioEngine.current.setResonance(value)
-  }
+
+  const setResonance = value => audioEngine.current.setResonance(value)
+
+  const setWaveform = waveform => audioEngine.current.setWaveform(waveform)
 
   return (
     <SynthUI>
@@ -45,6 +46,7 @@ export default () => {
         setAmpEnv={setAmpEnv}
         setCutoff={setCutoff}
         setResonance={setResonance}
+        setWaveform={setWaveform}
       />
       <Keyboard octaveNumber={2}>
         <Octave playNote={playNote} stopNote={stopNote} number={0} />
