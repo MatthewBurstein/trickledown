@@ -5,7 +5,7 @@ import {
   EnvelopeTitle,
   EnvelopeControlContainer
 } from "./envelopeStyledComponents"
-import { envelopeToControl } from "./envelopeValueConverter"
+import { engineToControl } from "./envelopeValueConverter"
 
 const parameters = [
   { name: "attack", label: "A" },
@@ -23,7 +23,7 @@ export default ({ title, setValue, initialValues }) => {
           <LinearControl
             key={name}
             effectValue={setValue(name)}
-            initialValue={envelopeToControl(initialValues[name])}
+            initialValue={engineToControl(initialValues[name])}
             label={label}
           />
         ))}

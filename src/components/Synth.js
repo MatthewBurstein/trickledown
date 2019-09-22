@@ -3,7 +3,7 @@ import AudioEngine from "../synthesizer/AudioEngine"
 import Octave from "./Keyboard/Octave"
 import { Keyboard } from "./Keyboard/Keys"
 import Controls from "./Controls"
-import { controlToEnvelope } from "./Envelope/envelopeValueConverter"
+import { controlToEngine } from "./Envelope/envelopeValueConverter"
 import { cutoffControlToEngine } from "./FilterControls/filterValueConverter"
 import { SynthUI } from "./SynthLayout"
 
@@ -22,12 +22,12 @@ export default () => {
 
   const setAmpEnv = property => {
     return value =>
-      audioEngine.current.setAmpEnv(property, controlToEnvelope(value))
+      audioEngine.current.setAmpEnv(property, controlToEngine(value))
   }
 
   const setFilterEnv = property => {
     return value =>
-      audioEngine.current.setFilterEnv(property, controlToEnvelope(value))
+      audioEngine.current.setFilterEnv(property, controlToEngine(value))
   }
 
   const setCutoff = value => {
