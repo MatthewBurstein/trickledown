@@ -21,8 +21,8 @@ export default ({ options, initialOption, title, effectValue }) => {
   return (
     <ControlAndTitle>
       {title && <SwitchTitle>{title}</SwitchTitle>}
-      <Control>
-        <Channel onClick={handleClick} optionCount={options.length}>
+      <Control onClick={handleClick}>
+        <Channel optionCount={options.length}>
           <Switch option={currentOption} />
         </Channel>
         <Labels>
