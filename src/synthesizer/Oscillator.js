@@ -32,6 +32,10 @@ export default class Oscillator {
     this.filter.frequency.value = value
   }
 
+  setDetune(cents) {
+    this.setDetune.value = cents
+  }
+
   setResonance(value) {
     this.filter.Q.value = value
   }

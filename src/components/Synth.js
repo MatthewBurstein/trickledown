@@ -42,6 +42,8 @@ export default () => {
 
   const setWaveform = waveform => audioEngine.current.setWaveform(waveform)
 
+  const setDetune = cents => audioEngine.current.setDetune(cents)
+
   return (
     <SynthUI>
       <Controls
@@ -50,6 +52,7 @@ export default () => {
         setCutoff={setCutoff}
         setResonance={setResonance}
         setWaveform={setWaveform}
+        setDetune={setDetune}
       />
       <Keyboard octaveNumber={2}>
         <Octave playNote={playNote} stopNote={stopNote} number={0} />

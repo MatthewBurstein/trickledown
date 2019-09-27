@@ -40,6 +40,11 @@ export default class AudioEngine {
     this.changeAllNotes(note => note.setResonance(value))
   }
 
+  setDetune(cents) {
+    this.oscConfig.osc.detune = cents
+    this.changeAllNotes(note => note.setDetune(cents))
+  }
+
   changeAllNotes(cb) {
     Object.values(this.notes).forEach(note => cb(note))
   }
@@ -47,7 +52,8 @@ export default class AudioEngine {
 
 export const initialValues = {
   osc: {
-    type: "sine"
+    type: "sine",
+    detune: 0
   },
   amp: {
     attack: 0.3,
