@@ -19,6 +19,7 @@ export default ({ setWaveform, setDetune }) => {
       <RotaryControl
         title="Detune"
         effectValue={setDetune}
+        centered={true}
         initialValue={initialValues.osc.detune}
       />
     </OscControlsContainer>

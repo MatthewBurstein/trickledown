@@ -7,9 +7,11 @@ import {
   ControlTitle
 } from "./rotaryControlStyledComponent"
 
-export default ({ title, effectValue, initialValue }) => {
-  const [rotation, setRotation] = useRotation(initialValue)
-  useEffect(() => effectValue(getRealValue(rotation)))
+export default ({ title, effectValue, initialValue, centered = false }) => {
+  const [rotation, setRotation] = useRotation(
+    calibrateInitialValue(initialValue, centered)
+  )
+  useEffect(() => effectValue(getControllerValue(rotation, centered)))
 
   const handleClick = clickEvent => {
     const originalYCoord = clickEvent.clientY
@@ -65,4 +67,8 @@ const calibrateRotation = value => {
   }
 }
 
-const getRealValue = rotation => rotation - rotationOffset
+const getControllerValue = (rotation, centered) =>
+  centered ? rotation : rotation - rotationOffset
+
+const calibrateInitialValue = (passedValue, centered) =>
+  centered ? passedValue - rotationOffset : passedValue
