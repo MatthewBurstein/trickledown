@@ -1,31 +1,30 @@
 import { convertRangeToRange } from "../../synthesizer/controlValueConverter"
 import {
-  minRealRotaryValue,
-  maxRealRotaryValue
+  minUIRotaryValue,
+  maxUIRotaryValue
 } from "../RotaryControl/RotaryControl"
 
 const minCutoffValue = 20
 const maxCutoffValue = 20 * 1000
 
-export const cutoffControlToEngine = rotaryValue => {
-  return Math.exp(
+export const cutoffControlToEngine = rotaryValue =>
+  Math.exp(
     convertRangeToRange(
       rotaryValue,
-      minRealRotaryValue,
-      maxRealRotaryValue,
+      minUIRotaryValue,
+      maxUIRotaryValue,
       Math.log(minCutoffValue),
       Math.log(maxCutoffValue)
     )
   )
-}
 
 export const cutoffEngineToControl = engineValue =>
   convertRangeToRange(
     Math.log(engineValue),
     Math.log(minCutoffValue),
     Math.log(maxCutoffValue),
-    minRealRotaryValue,
-    maxRealRotaryValue
+    minUIRotaryValue,
+    maxUIRotaryValue
   )
 
 const minResonanceValue = 0.0001
@@ -34,8 +33,8 @@ const maxResonanceValue = 800
 export const resonanceControlToEngine = rotaryValue =>
   convertRangeToRange(
     rotaryValue,
-    minRealRotaryValue,
-    maxRealRotaryValue,
+    minUIRotaryValue,
+    maxUIRotaryValue,
     minResonanceValue,
     maxResonanceValue
   )
@@ -45,6 +44,6 @@ export const resonanceEngineToControl = engineValue =>
     engineValue,
     minResonanceValue,
     maxResonanceValue,
-    minRealRotaryValue,
-    maxRealRotaryValue
+    minUIRotaryValue,
+    maxUIRotaryValue
   )

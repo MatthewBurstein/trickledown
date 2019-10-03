@@ -41,10 +41,10 @@ export default ({ title, effectValue, initialValue, centered = false }) => {
 }
 
 const rotationOffset = -130
-export const minRealRotaryValue = 0
-export const maxRealRotaryValue = 260
-const minRotation = minRealRotaryValue + rotationOffset
-const maxRotation = maxRealRotaryValue + rotationOffset
+export const minUIRotaryValue = 0
+export const maxUIRotaryValue = 260
+const minRotation = minUIRotaryValue + rotationOffset
+const maxRotation = maxUIRotaryValue + rotationOffset
 
 const useRotation = initialValue => {
   const [value, setValue] = useState(initialValue + rotationOffset)
