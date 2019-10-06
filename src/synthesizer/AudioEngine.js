@@ -58,7 +58,7 @@ export const initialValues = {
     },
     {
       type: "sine",
-      detune: 0
+      detune: 35
     }
   ],
   amp: {

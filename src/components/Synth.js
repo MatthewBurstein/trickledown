@@ -1,7 +1,6 @@
 import React, { useRef } from "react"
 import AudioEngine from "../synthesizer/AudioEngine"
-import Octave from "./Keyboard/Octave"
-import { Keyboard } from "./Keyboard/Keys"
+import Keyboard from "./Keyboard/Keyboard"
 import Controls from "./Controls"
 import { controlToEngine } from "./Envelope/envelopeValueConverter"
 import { cutoffControlToEngine } from "./FilterControls/filterValueConverter"
@@ -63,15 +62,7 @@ export default () => {
         setWaveform={setWaveform}
         setDetune={setDetune}
       />
-      <Keyboard octaveNumber={2}>
-        <Octave playNote={playNote} stopNote={stopNote} number={0} />
-        <Octave
-          playNote={playNote}
-          stopNote={stopNote}
-          number={1}
-          isLast={true}
-        />
-      </Keyboard>
+      <Keyboard stopNote={stopNote} playNote={playNote} />
     </SynthUI>
   )
 }
