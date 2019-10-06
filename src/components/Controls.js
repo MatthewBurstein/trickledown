@@ -5,8 +5,8 @@ import OscControls from "./OscControls/OscControls"
 import FilterControls from "./FilterControls/FilterControls"
 
 export default ({
-  setWaveform,
-  setDetune,
+  setWaveform1,
+  setDetune1,
   setCutoff,
   setResonance,
   setAmpEnv,
@@ -14,7 +14,16 @@ export default ({
 }) => {
   return (
     <Controls>
-      <OscControls setWaveform={setWaveform} setDetune={setDetune} />
+      <OscControls
+        title={"Osc 1"}
+        setWaveform={setWaveform1}
+        setDetune={setDetune1}
+      />
+      <OscControls
+        title={"Osc 2"}
+        setWaveform={setWaveform1}
+        setDetune={setDetune1}
+      />
       <AmpControls setEnv={setAmpEnv} />
       <FilterControls
         setCutoff={setCutoff}

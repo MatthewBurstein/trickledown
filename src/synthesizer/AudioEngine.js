@@ -3,16 +3,21 @@ import Oscillator from "./Oscillator"
 export default class AudioEngine {
   constructor() {
     this.notes = {}
-    this.oscConfig = initialValues
+    this.config = initialValues
   }
 
-  setWaveform(waveform) {
-    this.oscConfig.type = waveform
-    this.changeAllNotes(note => (note.osc.type = waveform))
+  setWaveform1(waveform) {
+    this.config.osc1.type = waveform
+    this.changeAllNotes(note => note.setType(waveform))
+  }
+
+  setDetune1(cents) {
+    this.config.osc1.detune = cents
+    this.changeAllNotes(note => note.setDetune(cents))
   }
 
   keyDown(note) {
-    this.notes[note] = new Oscillator(note, this.oscConfig)
+    this.notes[note] = new Oscillator(note, this.config)
     this.notes[note].play()
   }
 
@@ -21,28 +26,23 @@ export default class AudioEngine {
   }
 
   setAmpEnv(property, value) {
-    this.oscConfig.amp[property] = value
+    this.config.amp[property] = value
     this.changeAllNotes(note => note.setAmpEnv(property, value))
   }
 
   setFilterEnv(property, value) {
-    this.oscConfig.filter.env[property] = value
+    this.config.filter.env[property] = value
     this.changeAllNotes(note => note.setFilterEnv(property, value))
   }
 
   setCutoff(value) {
-    this.oscConfig.filter.frequency = value
+    this.config.filter.frequency = value
     this.changeAllNotes(note => note.setCutoff(value))
   }
 
   setResonance(value) {
-    this.oscConfig.filter.resonance = value
+    this.config.filter.resonance = value
     this.changeAllNotes(note => note.setResonance(value))
-  }
-
-  setDetune(cents) {
-    this.oscConfig.osc.detune = cents
-    this.changeAllNotes(note => note.setDetune(cents))
   }
 
   changeAllNotes(cb) {
@@ -51,7 +51,7 @@ export default class AudioEngine {
 }
 
 export const initialValues = {
-  osc: {
+  osc1: {
     type: "sine",
     detune: 0
   },

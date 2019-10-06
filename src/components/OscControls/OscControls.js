@@ -10,10 +10,10 @@ import RotaryControl from "../RotaryControl/RotaryControl"
 
 const initialDetune = detuneEngineToControl(initialValues.osc.detune)
 
-export default ({ setWaveform, setDetune }) => {
+export default ({ setWaveform, setDetune, title }) => {
   return (
     <OscControlsContainer>
-      <OscControlsTitle>Oscillator</OscControlsTitle>
+      <OscControlsTitle>{title}</OscControlsTitle>
       <Switch
         options={["sine", "square", "triangle", "sawtooth"]}
         initialOption={initialValues.osc.type}

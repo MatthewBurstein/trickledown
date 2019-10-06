@@ -43,4 +43,8 @@ export default class Oscillator {
   setFilterEnv(property, value) {
     this.filterEnv[property] = value
   }
+
+  setType(waveform) {
+    this.osc.type = waveform
+  }
 }
