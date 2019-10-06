@@ -5,7 +5,10 @@ import {
 } from "./oscControlsStyledComponents"
 import Switch from "../Switch/Switch"
 import { initialValues } from "../../synthesizer/AudioEngine"
+import { detuneEngineToControl } from "./oscValueConverter"
 import RotaryControl from "../RotaryControl/RotaryControl"
+
+const initialDetune = detuneEngineToControl(initialValues.osc.detune)
 
 export default ({ setWaveform, setDetune }) => {
   return (
@@ -20,7 +23,7 @@ export default ({ setWaveform, setDetune }) => {
         title="Detune"
         effectValue={setDetune}
         centered={true}
-        initialValue={initialValues.osc.detune}
+        initialValue={initialDetune}
       />
     </OscControlsContainer>
   )

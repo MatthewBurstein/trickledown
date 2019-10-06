@@ -5,6 +5,7 @@ import { Keyboard } from "./Keyboard/Keys"
 import Controls from "./Controls"
 import { controlToEngine } from "./Envelope/envelopeValueConverter"
 import { cutoffControlToEngine } from "./FilterControls/filterValueConverter"
+import { detuneControlToEngine } from "./OscControls/oscValueConverter"
 import { SynthUI } from "./SynthLayout"
 
 export default () => {
@@ -42,7 +43,10 @@ export default () => {
 
   const setWaveform = waveform => audioEngine.current.setWaveform(waveform)
 
-  const setDetune = cents => audioEngine.current.setDetune(cents)
+  const setDetune = value => {
+    const cents = detuneControlToEngine(value)
+    audioEngine.current.setDetune(cents)
+  }
 
   return (
     <SynthUI>

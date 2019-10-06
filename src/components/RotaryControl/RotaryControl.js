@@ -42,7 +42,9 @@ export default ({ title, effectValue, initialValue, centered = false }) => {
 
 const rotationOffset = -130
 export const minUIRotaryValue = 0
-export const maxUIRotaryValue = 260
+export const maxUIRotaryValue = -2 * rotationOffset
+export const centeredMinUIRotaryValue = rotationOffset
+export const centeredMaxUIRotaryValue = -rotationOffset
 const minRotation = minUIRotaryValue + rotationOffset
 const maxRotation = maxUIRotaryValue + rotationOffset
 
