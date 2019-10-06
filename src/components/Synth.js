@@ -46,9 +46,11 @@ export default () => {
       audioEngine.current.setWaveform(oscillatorNumber, waveform)
   }
 
-  const setDetune1 = value => {
-    const cents = detuneControlToEngine(value)
-    audioEngine.current.setDetune1(cents)
+  const setDetune = oscillatorNumber => {
+    return value => {
+      const cents = detuneControlToEngine(value)
+      audioEngine.current.setDetune(oscillatorNumber, cents)
+    }
   }
 
   return (
@@ -59,7 +61,7 @@ export default () => {
         setCutoff={setCutoff}
         setResonance={setResonance}
         setWaveform={setWaveform}
-        setDetune1={setDetune1}
+        setDetune={setDetune}
       />
       <Keyboard octaveNumber={2}>
         <Octave playNote={playNote} stopNote={stopNote} number={0} />

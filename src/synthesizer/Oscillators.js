@@ -1,14 +1,8 @@
 import Tone from "tone"
 
-export default class Oscillator {
+export default class Oscillators {
   constructor(note, config) {
-    this.oscillators = []
-    this.oscillators.push(
-      new Tone.Oscillator(note, config.oscillators[0].type).start()
-    )
-    this.oscillators.push(
-      new Tone.Oscillator(note, config.oscillators[1].type).start()
-    )
+    this.oscillators = this._buildOscillators(note, config)
     this.ampEnv = new Tone.AmplitudeEnvelope(config.amp)
 
     this.filter = new Tone.Filter(config.filter.frequency)
@@ -19,6 +13,14 @@ export default class Oscillator {
 
     this.oscillators.forEach(osc => osc.connect(this.filter))
     this.filter.chain(this.ampEnv, Tone.Master)
+  }
+
+  _buildOscillators(note, config) {
+    return config.oscillators.map(oscConfig => {
+      const osc = new Tone.Oscillator(note, oscConfig.type).start()
+      osc.detune.value = oscConfig.detune
+      return osc
+    })
   }
 
   play() {

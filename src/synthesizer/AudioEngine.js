@@ -1,4 +1,4 @@
-import Oscillator from "./Oscillator"
+import Oscillators from "./Oscillators"
 
 export default class AudioEngine {
   constructor() {
@@ -11,18 +11,13 @@ export default class AudioEngine {
     this.changeAllNotes(note => note.setType(oscillatorNumber, waveform))
   }
 
-  setDetune1(cents) {
-    this.config.oscillators[0].detune = cents
-    this.changeAllNotes(note => note.setDetune(0, cents))
-  }
-
-  setDetune2(cents) {
-    this.config.oscillators[1].detune = cents
-    this.changeAllNotes(note => note.setDetune(1, cents))
+  setDetune(oscillatorNumber, cents) {
+    this.config.oscillators[oscillatorNumber].detune = cents
+    this.changeAllNotes(note => note.setDetune(oscillatorNumber, cents))
   }
 
   keyDown(note) {
-    this.notes[note] = new Oscillator(note, this.config)
+    this.notes[note] = new Oscillators(note, this.config)
     this.notes[note].play()
   }
 

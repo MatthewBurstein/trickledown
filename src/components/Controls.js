@@ -6,7 +6,7 @@ import FilterControls from "./FilterControls/FilterControls"
 
 export default ({
   setWaveform,
-  setDetune1,
+  setDetune,
   setCutoff,
   setResonance,
   setAmpEnv,
@@ -17,12 +17,12 @@ export default ({
       <OscControls
         oscNumber={0}
         setWaveform={setWaveform(0)}
-        setDetune={setDetune1}
+        setDetune={setDetune(0)}
       />
       <OscControls
         oscNumber={1}
         setWaveform={setWaveform(1)}
-        setDetune={setDetune1}
+        setDetune={setDetune(1)}
       />
       <AmpControls setEnv={setAmpEnv} />
       <FilterControls
