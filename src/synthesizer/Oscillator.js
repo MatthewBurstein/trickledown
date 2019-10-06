@@ -2,7 +2,13 @@ import Tone from "tone"
 
 export default class Oscillator {
   constructor(note, config) {
-    this.osc = new Tone.Oscillator(note, config.type).start()
+    this.oscillators = []
+    this.oscillators.push(
+      new Tone.Oscillator(note, config.oscillators[0].type).start()
+    )
+    this.oscillators.push(
+      new Tone.Oscillator(note, config.oscillators[1].type).start()
+    )
     this.ampEnv = new Tone.AmplitudeEnvelope(config.amp)
 
     this.filter = new Tone.Filter(config.filter.frequency)
@@ -11,7 +17,8 @@ export default class Oscillator {
     this.filterEnv = new Tone.FrequencyEnvelope(config.filter.env)
     this.filterEnv.connect(this.filter.frequency)
 
-    this.osc.chain(this.filter, this.ampEnv, Tone.Master)
+    this.oscillators.forEach(osc => osc.connect(this.filter))
+    this.filter.chain(this.ampEnv, Tone.Master)
   }
 
   play() {
@@ -32,8 +39,12 @@ export default class Oscillator {
     this.filter.frequency.value = value
   }
 
-  setDetune(cents) {
-    this.setDetune.value = cents
+  setType(oscNumber, waveform) {
+    this.oscillators[oscNumber].type = waveform
+  }
+
+  setDetune(oscNumber, cents) {
+    this.oscillators[oscNumber].detune.value = cents
   }
 
   setResonance(value) {
@@ -42,9 +53,5 @@ export default class Oscillator {
 
   setFilterEnv(property, value) {
     this.filterEnv[property] = value
-  }
-
-  setType(waveform) {
-    this.osc.type = waveform
   }
 }

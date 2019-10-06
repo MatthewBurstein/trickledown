@@ -8,15 +8,16 @@ import { initialValues } from "../../synthesizer/AudioEngine"
 import { detuneEngineToControl } from "./oscValueConverter"
 import RotaryControl from "../RotaryControl/RotaryControl"
 
-const initialDetune = detuneEngineToControl(initialValues.osc.detune)
-
-export default ({ setWaveform, setDetune, title }) => {
+export default ({ setWaveform, setDetune, title, oscNumber }) => {
+  const initialDetune = detuneEngineToControl(
+    initialValues.oscillators[oscNumber].detune
+  )
   return (
     <OscControlsContainer>
-      <OscControlsTitle>{title}</OscControlsTitle>
+      <OscControlsTitle>Osc {oscNumber + 1}</OscControlsTitle>
       <Switch
         options={["sine", "square", "triangle", "sawtooth"]}
-        initialOption={initialValues.osc.type}
+        initialOption={initialValues.oscillators[oscNumber].type}
         effectValue={setWaveform}
       />
       <RotaryControl

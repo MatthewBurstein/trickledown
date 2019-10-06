@@ -6,14 +6,19 @@ export default class AudioEngine {
     this.config = initialValues
   }
 
-  setWaveform1(waveform) {
-    this.config.osc1.type = waveform
-    this.changeAllNotes(note => note.setType(waveform))
+  setWaveform(oscillatorNumber, waveform) {
+    this.config.oscillators[oscillatorNumber].type = waveform
+    this.changeAllNotes(note => note.setType(oscillatorNumber, waveform))
   }
 
   setDetune1(cents) {
-    this.config.osc1.detune = cents
-    this.changeAllNotes(note => note.setDetune(cents))
+    this.config.oscillators[0].detune = cents
+    this.changeAllNotes(note => note.setDetune(0, cents))
+  }
+
+  setDetune2(cents) {
+    this.config.oscillators[1].detune = cents
+    this.changeAllNotes(note => note.setDetune(1, cents))
   }
 
   keyDown(note) {
@@ -51,10 +56,16 @@ export default class AudioEngine {
 }
 
 export const initialValues = {
-  osc1: {
-    type: "sine",
-    detune: 0
-  },
+  oscillators: [
+    {
+      type: "sine",
+      detune: 0
+    },
+    {
+      type: "sine",
+      detune: 0
+    }
+  ],
   amp: {
     attack: 0.3,
     decay: 6,
