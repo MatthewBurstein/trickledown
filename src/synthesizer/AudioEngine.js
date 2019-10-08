@@ -1,4 +1,4 @@
-import Oscillators from "./Oscillators"
+import Voice from "./Voice"
 
 export default class AudioEngine {
   constructor() {
@@ -17,7 +17,7 @@ export default class AudioEngine {
   }
 
   keyDown(note) {
-    this.notes[note] = new Oscillators(note, this.config)
+    this.notes[note] = new Voice(note, this.config)
     this.notes[note].play()
   }
 

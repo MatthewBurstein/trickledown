@@ -29,6 +29,26 @@ const genericKey = css`
   user-select: none;
 `
 
+const setKeyColor = (isPressed, isHovered, isBlackKey) => {
+  if (isBlackKey) {
+    if (isPressed) {
+      return DARK_MAROON
+    } else if (isHovered) {
+      return MAROON
+    } else {
+      return "black"
+    }
+  } else {
+    if (isPressed) {
+      return PALE_PINK
+    } else if (isHovered) {
+      return PALEST_PINK
+    } else {
+      return "white"
+    }
+  }
+}
+
 const blackKey = whiteKeysToLeft => styled.div`
   ${genericKey}
   height: ${keyboardHeight * 0.6}px;
@@ -37,16 +57,9 @@ const blackKey = whiteKeysToLeft => styled.div`
     whiteKeyWidth * props.octave * 7 +
     whiteKeyWidth * whiteKeysToLeft -
     blackKeyWidth / 2}px;
-  background-color: black;
+  background-color: ${({ isPressed, isHovered }) =>
+    setKeyColor(isPressed, isHovered, true)};
   color: white;
-
-  &:hover {
-    background-color: ${MAROON};
-  }
-
-  &:active {
-    background-color: ${DARK_MAROON};
-  }
 `
 
 const whiteKey = (whiteKeysToLeft, isLast) => styled.div`
@@ -58,15 +71,8 @@ const whiteKey = (whiteKeysToLeft, isLast) => styled.div`
   border-left: 1px solid ${DARK_GREY};
   border-bottom: 1px solid ${DARK_GREY};
   border-right: ${_ => (isLast ? `1px solid ${DARK_GREY}` : "")};
-  background-color: white;
-
-  &:hover {
-    background-color: ${PALEST_PINK};
-  }
-
-  &:active {
-    background-color: ${PALE_PINK};
-  }
+  background-color: ${({ isPressed, isHovered }) =>
+    setKeyColor(isPressed, isHovered, false)};
 `
 
 export const CKey = whiteKey(0)

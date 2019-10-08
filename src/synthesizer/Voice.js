@@ -1,6 +1,6 @@
 import Tone from "tone"
 
-export default class Oscillators {
+export default class Voice {
   constructor(note, config) {
     this.oscillators = this._buildOscillators(note, config)
     this.ampEnv = new Tone.AmplitudeEnvelope(config.amp)
@@ -12,6 +12,7 @@ export default class Oscillators {
     this.filterEnv.connect(this.filter.frequency)
 
     this.oscillators.forEach(osc => osc.connect(this.filter))
+    console.log(this.filter.numberOfInputs)
     this.filter.chain(this.ampEnv, Tone.Master)
   }
 
