@@ -1,7 +1,15 @@
 import styled, { css } from "styled-components"
 import colors from "../../ColorPalette"
 
-const { DARK_GREY, PALE_PINK, PALEST_PINK, MAROON, DARK_MAROON } = colors
+const {
+  BLACK,
+  WHITE,
+  DARK_GREY,
+  PALE_PINK,
+  PALEST_PINK,
+  MAROON,
+  DARK_MAROON
+} = colors
 
 const keyboardHeight = 80
 const whiteKeyWidth = 40
@@ -36,7 +44,7 @@ const setKeyColor = (isPressed, isHovered, isBlackKey) => {
     } else if (isHovered) {
       return MAROON
     } else {
-      return "black"
+      return BLACK
     }
   } else {
     if (isPressed) {
@@ -44,7 +52,7 @@ const setKeyColor = (isPressed, isHovered, isBlackKey) => {
     } else if (isHovered) {
       return PALEST_PINK
     } else {
-      return "white"
+      return WHITE
     }
   }
 }
